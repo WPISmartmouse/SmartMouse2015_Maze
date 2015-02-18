@@ -27,8 +27,8 @@
 	node->west=NULL;
 }
 
-*Node get_node(int x, int y){
-
+*Node get_node(Maze *maze, int x, int y){
+	return 
 }
 
 bool free_maze(Maze *maze){

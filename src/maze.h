@@ -38,7 +38,7 @@ typedef _MAZE Maze;
 *Node create_node();
 
 /** get node by its position*/
-*Node get_node(int x, int y);
+*Node get_node(Maze *maze, int x, int y);
 
 /** free's the maze and all nodes
 	* @param return false on failure
