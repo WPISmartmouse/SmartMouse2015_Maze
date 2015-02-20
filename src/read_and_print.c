@@ -7,5 +7,7 @@ int main(){
 
 	Maze *maze = read_from_file(f);
 
+	print_maze(maze);
+
 	return EXIT_SUCCESS;
 }

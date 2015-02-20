@@ -4,28 +4,65 @@ Maze *read_from_file(FILE *f){
 	//check for bad file
 	if (!f) return NULL;
 
-	char line[MAZE_SIZE + 1]; //16 spaces and null terminator
+	Maze *maze = create_maze();
+
+	int len = 2 * MAZE_SIZE + 3;
+	char *line = malloc(len*sizeof(char));
+	char *l = line;
 	char *success;
 
 	int i;
 	for (i=0;i< MAZE_SIZE;i++){ //read in each line
-		success = fgets(line, 2 * MAZE_SIZE + 2,f);
-		
+		success = fgets(line, len + 1,f);
+		l = line;
+
 		if (!success) return NULL;
 
-		printf("successfully read... %s",line);
-	}
+		//printf("successfully read... %s",line);
 
+		int j;
+		for (j=0;j<MAZE_SIZE;j++){
+			Node *n = get_node(maze,i,j);
+			Node *n_west = get_node(maze,i,j-1);
+			Node *n_south = get_node(maze,i+1,j);
+
+			//make sure west node isn't null
+			if (n_west){
+				if (*l != '|'){
+					n->west = n_west;
+					n_west->east = n;
+				}
+			}
+
+			l++;
+
+			//make sure south node isn't null
+			if (n_south){
+				if (*l != '_'){
+					n->south = n_south;
+					n_south->north = n->south;
+				}
+			}
+
+			l++;
+		}
+	}
+	printf("\n");
+
+	free(line);
+
+	return maze;
 }
 
 void print_maze(Maze *maze){
 	int i,j;
 	for (i=0;i<MAZE_SIZE;i++){
-		char *s = calloc(sizeof(char),MAZE_SIZE + 1);
+		char *str = calloc(sizeof(char),MAZE_SIZE + 2);
+		char *s=str;
 		for (j=0;j<MAZE_SIZE;j++){
-			if (!maze->base_node[i][j].west){
+			if (!get_node(maze,i,j)->west){
 				strcpy(s++,"|");
-				if (maze->base_node[i][j].south){
+				if (!get_node(maze,i,j)->south){
 					strcpy(s++,"_");
 				}
 				else {
@@ -34,7 +71,7 @@ void print_maze(Maze *maze){
 			}
 			else {
 				strcpy(s++,"_");
-				if (maze->base_node[i][j].south){
+				if (!get_node(maze,i,j)->south){
 					strcpy(s++,"_");
 				}
 				else {
@@ -42,7 +79,8 @@ void print_maze(Maze *maze){
 				}
 			}
 		}
+		*(s++) = '|';
 		*s = '\0';
-		printf("%s\n",s);
+		printf("%s\n",str);
 	}
 }

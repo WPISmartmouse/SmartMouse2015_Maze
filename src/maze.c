@@ -6,14 +6,13 @@ Maze *create_maze(){
 	Maze *maze = malloc(sizeof(Maze));
 	maze->solved = false;
 	maze->fastest_route = malloc(MAZE_SIZE*MAZE_SIZE*sizeof(char)); //assume really bad route--visits all squares.
-	*maze->base_node = create_node();
 	int i,j;
 	for (i=0;i<MAZE_SIZE;i++){
-		for (j=0;j<MAZE_SIZE;j++){	
-			*(maze->base_node++) = create_node();
+		for (j=0;j<MAZE_SIZE;j++){
+			maze->nodes[i][j] = create_node();
 		}
 	}
-
+	return maze;
 }
 
 Node *create_node(){
@@ -26,17 +25,19 @@ Node *create_node(){
 	return node;
 }
 
-Node *get_node(Maze *maze, int x, int y){
-	return &maze->base_node[x][y];
+Node *get_node(Maze *maze, int row, int col){
+	return maze->nodes[row][col];
 }
 
 bool free_maze(Maze *maze){
 	free(maze->fastest_route);
-	free(maze->base_node); //you didn't malloc neighbors, so don't free them.
+	free(maze->nodes); //you didn't malloc neighbors, so don't free them.
 	free(maze);
+	return true;
 }
 
 //nothing fancy here, just convenient. might remove if it never gets more complicated
 bool free_node(Node *node){
 	free(node);	
+	return true;
 }

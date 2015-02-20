@@ -24,7 +24,7 @@ typedef struct _NODE Node;
 */
 struct _MAZE{
 	bool solved; //boolean for if we know the fastest rout
-	Node **base_node; // array of node pointers
+	Node *nodes[MAZE_SIZE][MAZE_SIZE]; // array of node pointers
 	char *fastest_route; //a char array like NSEWNENNSNE, which means North, South, East...
 };
 
