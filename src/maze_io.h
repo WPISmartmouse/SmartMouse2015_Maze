@@ -10,6 +10,11 @@
 /** overall function to create a maze from file. any error will result in a null return.
 * @return a valid maze pointer to the maze struct, null on any sort of error
 */
-Maze maze* read_from_file(FILE *f);
+Maze *read_from_file(FILE *f);
+
+/** prints a maze
+* @param maze the maze
+*/
+void print_maze(Maze *maze);
 
 #endif

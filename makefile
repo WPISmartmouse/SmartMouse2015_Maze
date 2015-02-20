@@ -1,12 +1,7 @@
-all: maze read_maze
+all: obj/maze.o obj/maze_io.o
 
-read_maze: obj/read_maze.o
-
-maze: obj/maze.o
-	gcc -g obj/maze.o -o bin/maze 
-
-obj/read_maze.o: src/read_maze.c src/read_maze.h
-	gcc -g -c src/read_maze.c -o obj/read_maze.o
+obj/maze_io.o: src/maze_io.c src/maze_io.h
+	gcc -g -c src/maze_io.c -o obj/maze_io.o
 
 obj/maze.o: src/maze.c src/maze.h
 	gcc -g -c src/maze.c -o obj/maze.o
