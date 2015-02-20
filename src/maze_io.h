@@ -3,6 +3,7 @@
 #define READ_MAZE_H
 
 #include "maze.h"
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
