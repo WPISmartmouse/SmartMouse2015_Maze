@@ -18,15 +18,19 @@ Maze *create_maze(){
 Node *create_node(){
 	Node *node = malloc(sizeof(Node));
 	node->known = false;
-	node->north=NULL;
-	node->south=NULL;
-	node->east=NULL;
-	node->west=NULL;
+	node->neighbors[N]=NULL;
+	node->neighbors[S]=NULL;
+	node->neighbors[E]=NULL;
+	node->neighbors[W]=NULL;
 	return node;
 }
 
 Node *get_node(Maze *maze, int row, int col){
 	return maze->nodes[row][col];
+}
+
+bool visited(int row, int col, Direction dir, Maze *maze){
+	return maze->nodes[row][col]->neighbors[dir]->known;
 }
 
 bool free_maze(Maze *maze){

@@ -29,8 +29,8 @@ Maze *read_from_file(FILE *f){
 			//make sure west node isn't null
 			if (n_west){
 				if (*l != '|'){
-					n->west = n_west;
-					n_west->east = n;
+					n->neighbors[W] = n_west;
+					n_west->neighbors[E] = n;
 				}
 			}
 
@@ -39,8 +39,8 @@ Maze *read_from_file(FILE *f){
 			//make sure south node isn't null
 			if (n_south){
 				if (*l != '_'){
-					n->south = n_south;
-					n_south->north = n->south;
+					n->neighbors[S] = n_south;
+					n_south->neighbors[N] = n->neighbors[S];
 				}
 			}
 
@@ -60,9 +60,9 @@ void print_maze(Maze *maze){
 		char *str = calloc(sizeof(char),MAZE_SIZE + 2);
 		char *s=str;
 		for (j=0;j<MAZE_SIZE;j++){
-			if (!get_node(maze,i,j)->west){
+			if (!get_node(maze,i,j)->neighbors[W]){
 				strcpy(s++,"|");
-				if (!get_node(maze,i,j)->south){
+				if (!get_node(maze,i,j)->neighbors[S]){
 					strcpy(s++,"_");
 				}
 				else {
@@ -71,7 +71,7 @@ void print_maze(Maze *maze){
 			}
 			else {
 				strcpy(s++,"_");
-				if (!get_node(maze,i,j)->south){
+				if (!get_node(maze,i,j)->neighbors[S]){
 					strcpy(s++,"_");
 				}
 				else {

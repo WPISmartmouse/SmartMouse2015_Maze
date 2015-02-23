@@ -7,14 +7,15 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+enum _DIRECTION{N,E,S,W};
+
+typedef enum _DIRECTION Direction;
+
 /** holds its location & neighbors, as well as a bool for indicating if it has been discovered */
 struct _NODE{
 	bool known;
 	//if you want to iterate over neighbors, just increment the pointer to north
-	struct _NODE *north;
-	struct _NODE *west;
-	struct _NODE *east;
-	struct _NODE *south;
+	struct _NODE *neighbors[4];
 };
 
 typedef struct _NODE Node;
@@ -40,6 +41,9 @@ Node *create_node();
 
 /** get node by its position*/
 Node *get_node(Maze *maze, int x, int y);
+
+/** check if a node in a direciton is visited*/
+bool visited(int row, int col,  Direction dir, Maze *maze);
 
 /** free's the maze and all nodes
 	* @param return false on failure
