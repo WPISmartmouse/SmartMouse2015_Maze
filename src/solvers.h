@@ -6,8 +6,20 @@
 #include "mouse.h"
 #include <stdbool.h>
 
+/** set starting point 0,0 & S. depth-first search of all nodes in the grid, adding 1 each time.
+* once all nodes are discovered, the path is solved by going backwards from the center to the lowest neighbor each time
+* @param maze maze to solve
+*/
+void flood_fill(Maze *maze);
+
+/**this assigns n->weight+1 to each neighbor, and recursively calls it on all valid neighbors
+* @param node the node to explore the neighbors of
+* @param weight the weight to set the node to
+*/
+void explore_neighbors(Node *root, Node *node ,int weight);
 
 /** set starting point to 0,0. follow left hand wall
+* @param maze maze to solve
 */
 void left_hand_follow(Maze *maze);
 

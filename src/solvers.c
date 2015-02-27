@@ -1,5 +1,52 @@
 #include "solvers.h"
 
+void flood_fill(Maze *maze){
+	Mouse *mouse = create_mouse();
+
+	Node *n = get_node(maze,mouse->row,mouse->col);
+
+	Node *root = get_node(maze,0,0);
+
+	print_pointer_maze(maze);
+
+	//explore all neighbors of the current node starting  with a weight of 1
+	explore_neighbors(root, n, 1);
+
+	int i,j;
+	for (i=0;i<MAZE_SIZE;i++){
+		for (j=0;j<MAZE_SIZE;j++){
+			int w = get_node(maze,i,j)->weight;
+			if (w<10){
+				printf(" %d ",w);
+			}
+			else {
+				printf("%d ",w);
+			}
+		}
+		printf("\n");
+	}
+}
+
+
+void explore_neighbors(Node *root, Node *node,int weight){
+	if (node != NULL){//handles dead-end nodes
+
+		node->weight = weight;
+
+		if (!node->known){
+			node->known = true;
+			int i;
+			//recursive call to explore each neighbors
+			for (i=0;i<4;i++){
+				explore_neighbors(root, node->neighbors[i], weight+1);
+			}
+		}
+
+
+	}
+}
+
+
 void left_hand_follow(Maze *maze){
 	int i=0,j=0;
 	maze->nodes[0][0]->known=true;

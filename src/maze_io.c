@@ -16,7 +16,7 @@ Maze *read_from_file(FILE *f){
 		success = fgets(line, len + 1,f);
 		l = line;
 
-		if (!success) return NULL;
+		if (success == NULL) return NULL;
 
 		//printf("successfully read... %s",line);
 
@@ -40,7 +40,7 @@ Maze *read_from_file(FILE *f){
 			if (n_south){
 				if (*l != '_'){
 					n->neighbors[S] = n_south;
-					n_south->neighbors[N] = n->neighbors[S];
+					n_south->neighbors[N] = n;
 				}
 			}
 
@@ -82,5 +82,15 @@ void print_maze(Maze *maze){
 		*(s++) = '|';
 		*s = '\0';
 		printf("%s\n",str);
+	}
+}
+
+void print_pointer_maze(Maze *maze){
+	int i,j;
+	for (i=0;i<MAZE_SIZE;i++){
+		for (j=0;j<MAZE_SIZE;j++){
+			printf("%p ", get_node(maze,i,j));
+		}
+		printf("\n");
 	}
 }

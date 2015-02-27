@@ -10,7 +10,7 @@ int main(){
 
 	Maze *maze = read_from_file(f);
 
-	left_hand_follow(maze);
-
+	flood_fill(maze);
+	
 	return EXIT_SUCCESS;
 }

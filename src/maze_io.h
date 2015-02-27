@@ -18,4 +18,6 @@ Maze *read_from_file(FILE *f);
 */
 void print_maze(Maze *maze);
 
+void print_pointer_maze(Maze *maze);
+
 #endif
