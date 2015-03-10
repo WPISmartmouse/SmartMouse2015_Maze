@@ -14,9 +14,11 @@ void flood_fill(Maze *maze);
 
 /**this assigns n->weight+1 to each neighbor, and recursively calls it on all valid neighbors
 * @param node the node to explore the neighbors of
+* @param goal the node you want to find a path to
 * @param weight the weight to set the node to
+* @param success should be false to start, and will be set to true if path to goal is found
 */
-void explore_neighbors(Node *root, Node *node ,int weight);
+void explore_neighbors(Node *node,Node *goal, int weight, bool *success);
 
 /** set starting point to 0,0. follow left hand wall
 * @param maze maze to solve
@@ -51,6 +53,9 @@ void choose_direction(Mouse *mouse, Maze *maze);
 */
 bool atCenter(Mouse *mouse);
 
-
+/** checks if the row col is at center
+* @param mouse the mouse
+*/
+bool isCenter(int row, int col);
 
 #endif

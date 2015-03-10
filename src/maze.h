@@ -15,6 +15,7 @@ typedef enum _DIRECTION Direction;
 struct _NODE{
 	bool known;
 	int weight; //used for flood-fill
+	int distance; //used for a star
 	//if you want to iterate over neighbors, just increment the pointer to north
 	struct _NODE *neighbors[4];
 };
