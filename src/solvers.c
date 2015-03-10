@@ -29,8 +29,6 @@ void flood_fill(Maze *maze){
 	Node *root = get_node(maze,0,0);
 	Node *center = get_node(maze,7,7);
 
-	print_pointer_maze(maze);
-
 	//explore all neighbors of the current node starting  with a weight of 1
 	//return 1 means path to center was found
 	bool success = false;
@@ -40,11 +38,37 @@ void flood_fill(Maze *maze){
 
 	if (!success){
 		printf("maze not solved :(\n");
+		return;
 	}
 	else {
 		printf("maze solved!\n");
 	}
 	
+	n = center;
+	char *path = maze->fastest_route;
+	while (n != root){
+		Node *min_node = n;
+		Direction min_dir = N;
+
+		int i;
+		for (i=0;i<4;i++){
+			if (n->neighbors[i] != NULL){
+				if (n->neighbors[i]->weight < min_node->weight){
+					min_node = n->neighbors[i];
+					min_dir = i;
+				}
+			}
+		}
+
+		n = min_node;
+
+		*(path++) = dir_to_char(min_dir);
+		*(path++) = ' ';
+	}
+	*path = '\0';
+
+	printf("path = %s\n",maze->fastest_route);
+
 }
 
 
