@@ -1,5 +1,26 @@
 #include "solvers.h"
 
+//solves with a star between two positions
+void A_star(Maze *maze, int x0, int y0, int x1, int y1){
+
+	Node *start = get_node(maze,x0,y0);
+	Node *goal = get_node(maze,x1,y1);
+	Node *n;
+	while (!goal->known){
+		n = closest_unknown(maze);
+		n->known = true;
+		update_neighbors(n);
+	}
+}
+
+Node *closest_unknown(Maze *maze){
+
+}
+
+void update_neighbors(Node *node){
+
+}
+
 //This method will take a maze and perform a traditional flood fill
 //the fill starts from 0,0
 void flood_fill(Maze *maze){
@@ -23,8 +44,6 @@ void flood_fill(Maze *maze){
 	else {
 		printf("maze solved!\n");
 	}
-
-	
 	
 }
 

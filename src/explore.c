@@ -10,7 +10,7 @@ int main(){
 
 	Maze *maze = read_from_file(f);
 
-	flood_fill(maze);
+	A_star(maze,0,0,7,7);
 	
 	return EXIT_SUCCESS;
 }

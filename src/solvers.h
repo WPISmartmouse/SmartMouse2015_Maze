@@ -6,6 +6,12 @@
 #include "mouse.h"
 #include <stdbool.h>
 
+void A_star(Maze *maze, int x0, int y0, int x1, int y1);
+
+Node *closest_unknown(Maze *maze);	
+
+void update_neighbors(Node *node);
+
 /** set starting point 0,0 & S. depth-first search of all nodes in the grid, adding 1 each time.
 * once all nodes are discovered, the path is solved by going backwards from the center to the lowest neighbor each time
 * @param maze maze to solve
