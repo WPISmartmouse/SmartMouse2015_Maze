@@ -91,10 +91,33 @@ void print_weight_maze(Maze *maze){
 		for (j=0;j<MAZE_SIZE;j++){
 			int w = get_node(maze,i,j)->weight;
 			if (w<10){
+				printf("  %d ",w);
+			}
+			else if (w<100){
 				printf(" %d ",w);
 			}
 			else {
 				printf("%d ",w);
+			}
+		}
+		printf("\n");
+	}
+}
+
+
+void print_dist_maze(Maze *maze){
+	int i,j;
+	for (i=0;i<MAZE_SIZE;i++){
+		for (j=0;j<MAZE_SIZE;j++){
+			int d = get_node(maze,i,j)->distance;
+			if (d<10){
+				printf("  %d ",d);
+			}
+			else if (d<100){
+				printf(" %d ",d);
+			}
+			else {
+				printf("%d ",d);
 			}
 		}
 		printf("\n");

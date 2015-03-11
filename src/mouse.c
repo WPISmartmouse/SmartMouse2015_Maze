@@ -26,6 +26,18 @@ char dir_to_char(Direction dir){
 	}
 }
 
+bool *sense(Maze *maze, Mouse *mouse){
+	bool *walls = malloc(4*sizeof(bool));
+
+	int i;
+	Node *n = get_node(maze,mouse->row,mouse->col);
+	for (i=0;i<4;i++){
+		walls = (n->neighbors[i] == NULL);
+	}
+
+	return walls;
+}
+
 void setDir(Mouse *mouse,Direction d){
 	mouse->dir = d;
 }

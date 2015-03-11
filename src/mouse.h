@@ -20,4 +20,7 @@ void setDir(Mouse *mouse,Direction d);
 
 char dir_to_char(Direction dir);
 
+/** returns length 4 array of bools. must be freed */
+bool *sense(Maze *maze, Mouse *mouse);
+
 #endif

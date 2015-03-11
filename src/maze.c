@@ -35,7 +35,7 @@ bool visited(int row, int col, Direction dir, Maze *maze){
 
 bool free_maze(Maze *maze){
 	free(maze->fastest_route);
-	free(maze->nodes); //you didn't malloc neighbors, so don't free them.
+	free(maze->nodes);
 	free(maze);
 	return true;
 }

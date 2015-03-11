@@ -22,4 +22,6 @@ void print_pointer_maze(Maze *maze);
 
 void print_weight_maze(Maze *maze);
 
+void print_dist_maze(Maze *maze);
+
 #endif

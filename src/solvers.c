@@ -1,23 +1,31 @@
 #include "solvers.h"
 
-//solves with a star between two positions
-void A_star(Maze *maze, int x0, int y0, int x1, int y1){
+#define min(a, b) ((a) < (b) ? (a) : (b))
 
-	Node *start = get_node(maze,x0,y0);
-	Node *goal = get_node(maze,x1,y1);
-	Node *n;
-	while (!goal->known){
-		n = closest_unknown(maze);
-		n->known = true;
-		update_neighbors(n);
+//starts at 0,0 and explores the whole maze
+//kmaze is the known maze, and should only be used to call sense()
+void flood_explore(Maze *kmaze){
+	Mouse *mouse = create_mouse();
+
+	Maze* no_wall_maze = create_maze(); //this maze is initially no walls, and walls are filled out every time the mouse moves
+	Maze* all_wall_maze = create_maze(); //this maze is initially no walls, and walls are filled out every time the mouse moves
+	int i,j;
+	for (i=0;i<MAZE_SIZE;i++){
+		for (j=0;j<MAZE_SIZE;j++){
+			get_node(maze,i,j)->neighbors[N] = get_node(maze, i-1, j);
+			get_node(maze,i,j)->neighbors[E] = get_node(maze, i, j+1);
+			get_node(maze,i,j)->neighbors[S] = get_node(maze, i+1, j);
+			get_node(maze,i,j)->neighbors[W] = get_node(maze, i, j-1);
+		}
 	}
-}
 
-Node *closest_unknown(Maze *maze){
+	Node *start;
+	Node *goal;
 
-}
+	do {
 
-void update_neighbors(Node *node){
+	}
+	while ();
 
 }
 
