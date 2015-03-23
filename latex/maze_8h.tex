@@ -1,0 +1,191 @@
+\section{maze.\-h File Reference}
+\label{maze_8h}\index{maze.\-h@{maze.\-h}}
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdbool.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf \-\_\-\-N\-O\-D\-E}
+\item 
+struct {\bf \-\_\-\-M\-A\-Z\-E}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E}~(16)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum {\bf \-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N} {\bf Direction}
+\item 
+typedef struct {\bf \-\_\-\-N\-O\-D\-E} {\bf Node}
+\item 
+typedef struct {\bf \-\_\-\-M\-A\-Z\-E} {\bf Maze}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bf \-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N} \{ {\bf N}, 
+{\bf E}, 
+{\bf S}, 
+{\bf W}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Maze} $\ast$ {\bf create\-\_\-maze} ()
+\item 
+{\bf Node} $\ast$ {\bf create\-\_\-node} ()
+\item 
+{\bf Node} $\ast$ {\bf get\-\_\-node} ({\bf Maze} $\ast$maze, int x, int y)
+\item 
+bool {\bf visited} (int row, int col, {\bf Direction} dir, {\bf Maze} $\ast$maze)
+\item 
+bool {\bf free\-\_\-maze} ({\bf Maze} $\ast$maze)
+\item 
+bool {\bf free\-\_\-node} ({\bf Node} $\ast$node)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{maze.\-h@{maze.\-h}!M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E@{M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E}}
+\index{M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E@{M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E}!maze.h@{maze.\-h}}
+\subsubsection[{M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E~(16)}\label{maze_8h_a435c893b3d82298d514a7c5f1e433bff}
+
+
+Referenced by create\-\_\-maze(), flood\-\_\-explore(), flood\-\_\-fill(), is\-Center(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-pointer\-\_\-maze(), print\-\_\-weight\-\_\-maze(), and read\-\_\-from\-\_\-file().
+
+
+
+\subsection{Typedef Documentation}
+\index{maze.\-h@{maze.\-h}!Direction@{Direction}}
+\index{Direction@{Direction}!maze.h@{maze.\-h}}
+\subsubsection[{Direction}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf \-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N} {\bf Direction}}\label{maze_8h_a4d1abda464a91e3eb4869a17aa0b279e}
+\index{maze.\-h@{maze.\-h}!Maze@{Maze}}
+\index{Maze@{Maze}!maze.h@{maze.\-h}}
+\subsubsection[{Maze}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-\-M\-A\-Z\-E} {\bf Maze}}\label{maze_8h_a2a99e7d9e300febd16ba6b643e88149e}
+\index{maze.\-h@{maze.\-h}!Node@{Node}}
+\index{Node@{Node}!maze.h@{maze.\-h}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-\-N\-O\-D\-E} {\bf Node}}\label{maze_8h_af7c7b49cfe1ca6966a61e108025c680c}
+
+
+\subsection{Enumeration Type Documentation}
+\index{maze.\-h@{maze.\-h}!\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N@{\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N}}
+\index{\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N@{\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N}!maze.h@{maze.\-h}}
+\subsubsection[{\-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf \-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N}}\label{maze_8h_a11a64da2564648c9fe9a9606714aad81}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N@{N}!maze.\-h@{maze.\-h}}\index{maze.\-h@{maze.\-h}!N@{N}}\item[{\em 
+N\label{maze_8h_a11a64da2564648c9fe9a9606714aad81a2c63acbe79d9f41ba6bb7766e9c37702}
+}]\index{E@{E}!maze.\-h@{maze.\-h}}\index{maze.\-h@{maze.\-h}!E@{E}}\item[{\em 
+E\label{maze_8h_a11a64da2564648c9fe9a9606714aad81ab199e021998d49b1f09338d8b9b18ecb}
+}]\index{S@{S}!maze.\-h@{maze.\-h}}\index{maze.\-h@{maze.\-h}!S@{S}}\item[{\em 
+S\label{maze_8h_a11a64da2564648c9fe9a9606714aad81af1ce01387d2348f8b858721a7db81670}
+}]\index{W@{W}!maze.\-h@{maze.\-h}}\index{maze.\-h@{maze.\-h}!W@{W}}\item[{\em 
+W\label{maze_8h_a11a64da2564648c9fe9a9606714aad81ab722ceeb601c72cd78fbd35f3581fdf7}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\index{maze.\-h@{maze.\-h}!create\-\_\-maze@{create\-\_\-maze}}
+\index{create\-\_\-maze@{create\-\_\-maze}!maze.h@{maze.\-h}}
+\subsubsection[{create\-\_\-maze}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Maze}$\ast$ create\-\_\-maze (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{maze_8h_a2546eb73f3c2c31198e29ede13a23397}
+allocates a maze of the given size and sets all links in graph to be null. Naturally, it's column major. 
+\begin{DoxyParams}{Parameters}
+{\em size} & the size of the maze\\
+\hline
+\end{DoxyParams}
+\doxyref{maze.\-c}{p.}{maze_8c} implements the functions used to create, free, and manipulate maze \begin{DoxyAuthor}{Author}
+Peter Mitrano 
+\end{DoxyAuthor}
+
+
+References create\-\_\-node(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, \-\_\-\-M\-A\-Z\-E\-::nodes, and \-\_\-\-M\-A\-Z\-E\-::solved.
+
+
+
+Referenced by flood\-\_\-explore(), and read\-\_\-from\-\_\-file().
+
+\index{maze.\-h@{maze.\-h}!create\-\_\-node@{create\-\_\-node}}
+\index{create\-\_\-node@{create\-\_\-node}!maze.h@{maze.\-h}}
+\subsubsection[{create\-\_\-node}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ create\-\_\-node (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{maze_8h_ab59097ab48a1e883285ed6d3f851e867}
+allocates a node setting all nighbors to null. Function does N\-O\-T allocate for neighbors. 
+
+References E, \-\_\-\-N\-O\-D\-E\-::known, N, \-\_\-\-N\-O\-D\-E\-::neighbors, S, and W.
+
+
+
+Referenced by create\-\_\-maze().
+
+\index{maze.\-h@{maze.\-h}!free\-\_\-maze@{free\-\_\-maze}}
+\index{free\-\_\-maze@{free\-\_\-maze}!maze.h@{maze.\-h}}
+\subsubsection[{free\-\_\-maze}]{\setlength{\rightskip}{0pt plus 5cm}bool free\-\_\-maze (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}\label{maze_8h_a3571b14873ee008644b52337ff2956d4}
+free's the maze and all nodes 
+\begin{DoxyParams}{Parameters}
+{\em return} & false on failure \\
+\hline
+\end{DoxyParams}
+
+
+References \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, and \-\_\-\-M\-A\-Z\-E\-::nodes.
+
+\index{maze.\-h@{maze.\-h}!free\-\_\-node@{free\-\_\-node}}
+\index{free\-\_\-node@{free\-\_\-node}!maze.h@{maze.\-h}}
+\subsubsection[{free\-\_\-node}]{\setlength{\rightskip}{0pt plus 5cm}bool free\-\_\-node (
+\begin{DoxyParamCaption}
+\item[{{\bf Node} $\ast$}]{node}
+\end{DoxyParamCaption}
+)}\label{maze_8h_a7e63df326f2a24ffd4e4c31f38d127c7}
+free's a node 
+\begin{DoxyParams}{Parameters}
+{\em return} & false on failure \\
+\hline
+\end{DoxyParams}
+\index{maze.\-h@{maze.\-h}!get\-\_\-node@{get\-\_\-node}}
+\index{get\-\_\-node@{get\-\_\-node}!maze.h@{maze.\-h}}
+\subsubsection[{get\-\_\-node}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ get\-\_\-node (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze, }
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}\label{maze_8h_ac38aff6bc69f390a53255c8d9dff9f2c}
+get node by its position 
+
+References \-\_\-\-M\-A\-Z\-E\-::nodes.
+
+
+
+Referenced by flood\-\_\-explore(), flood\-\_\-fill(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-pointer\-\_\-maze(), print\-\_\-weight\-\_\-maze(), read\-\_\-from\-\_\-file(), and sense().
+
+\index{maze.\-h@{maze.\-h}!visited@{visited}}
+\index{visited@{visited}!maze.h@{maze.\-h}}
+\subsubsection[{visited}]{\setlength{\rightskip}{0pt plus 5cm}bool visited (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{col, }
+\item[{{\bf Direction}}]{dir, }
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}\label{maze_8h_aaacad4fe859a1f00d1f928a38eba0ad3}
+check if a node in a direciton is visited 
+
+References \-\_\-\-N\-O\-D\-E\-::known, \-\_\-\-N\-O\-D\-E\-::neighbors, and \-\_\-\-M\-A\-Z\-E\-::nodes.
+

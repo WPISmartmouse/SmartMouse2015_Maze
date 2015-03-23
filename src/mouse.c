@@ -9,12 +9,16 @@ Mouse *create_mouse(){
 }
 
 void forward(Mouse *mouse){
-	switch(mouse->dir){
-		case N:mouse->row--;break;
-		case S:mouse->row++;break;
-		case E:mouse->col++;break;
-		case W:mouse->col--;break;
-	}
+	update_pos(mouse->dir, &mouse->row, &mouse->col);
+}
+
+void update_pos(Direction dir, int *row, int *col){
+	switch(dir){
+		case N:(*row)--;break;
+		case S:(*row)++;break;
+		case E:(*col)++;break;
+		case W:(*col)--;break;
+	}	
 }
 
 char dir_to_char(Direction dir){
@@ -26,18 +30,15 @@ char dir_to_char(Direction dir){
 	}
 }
 
+/**true means a wall exists**/
 bool *sense(Maze *maze, Mouse *mouse){
 	bool *walls = malloc(4*sizeof(bool));
-
+	bool *w = walls;
 	int i;
 	Node *n = get_node(maze,mouse->row,mouse->col);
 	for (i=0;i<4;i++){
-		walls = (n->neighbors[i] == NULL);
+		*(w++) = (n->neighbors[i] == NULL);
 	}
 
 	return walls;
-}
-
-void setDir(Mouse *mouse,Direction d){
-	mouse->dir = d;
 }

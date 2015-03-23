@@ -1,3 +1,6 @@
+/** solvers.h
+	@author Peter Mitrano
+*/
 #include "solvers.h"
 
 #define min(a, b) ((a) < (b) ? (a) : (b))
@@ -12,26 +15,66 @@ void flood_explore(Maze *kmaze){
 	int i,j;
 	for (i=0;i<MAZE_SIZE;i++){
 		for (j=0;j<MAZE_SIZE;j++){
-			get_node(maze,i,j)->neighbors[N] = get_node(maze, i-1, j);
-			get_node(maze,i,j)->neighbors[E] = get_node(maze, i, j+1);
-			get_node(maze,i,j)->neighbors[S] = get_node(maze, i+1, j);
-			get_node(maze,i,j)->neighbors[W] = get_node(maze, i, j-1);
+			get_node(no_wall_maze,i,j)->neighbors[N] = get_node(no_wall_maze, i-1, j);
+			get_node(no_wall_maze,i,j)->neighbors[E] = get_node(no_wall_maze, i, j+1);
+			get_node(no_wall_maze,i,j)->neighbors[S] = get_node(no_wall_maze, i+1, j);
+			get_node(no_wall_maze,i,j)->neighbors[W] = get_node(no_wall_maze, i, j-1);
 		}
 	}
 
 	Node *start;
 	Node *goal;
 
-	do {
+	char *no_wall_path;
+	char *all_wall_path;
 
+	//mouse starts at 0,0
+	do {
+		//check left right and front sides
+		//eventually this will return values from sensors
+		bool *walls = sense(kmaze,mouse);
+		printf("sensed N=%i E=%i S=%i W=%i\n",walls[0],walls[1],walls[2],walls[3]);
+
+		//update the mazes to match the sensor readings
+		Node *no_wall_node = get_node(no_wall_maze,mouse->row,mouse->col);
+		Node *all_wall_node = get_node(all_wall_maze,mouse->row,mouse->col);
+		int i;
+
+		//check each direction around the mouse for walls
+		for (i=0;i<4;i++){
+
+			int r = mouse->row;
+			int c = mouse->col;
+			update_pos(i, &r, &c);
+
+			//if no wall exists in that direction
+			if (walls[i]){
+				no_wall_node->neighbors[i] = NULL;
+			}
+			else {
+				all_wall_node->neighbors[i] = get_node(all_wall_maze, r,c);	
+				
+			}
+		}
+
+		
+		//print_pointer_maze(kmaze);
+		//print_pointer_maze(all_wall_maze);
+		print_pointer_maze(no_wall_maze);
+
+		//solve flood fill on the two mazes
+		no_wall_path = flood_fill(no_wall_maze);
+		all_wall_path = flood_fill(all_wall_maze);//segfault occurs solving all_wall_maze
 	}
-	while ();
+	while (no_wall_path != all_wall_path);
+
+
 
 }
 
 //This method will take a maze and perform a traditional flood fill
 //the fill starts from 0,0
-void flood_fill(Maze *maze){
+char *flood_fill(Maze *maze){
 
 	Node *n = get_node(maze,0,0);
 	Node *root = get_node(maze,0,0);
@@ -53,7 +96,7 @@ void flood_fill(Maze *maze){
 	}
 	
 	n = center;
-	char *path = maze->fastest_route;
+	char *path = malloc(sizeof(char)*MAZE_SIZE*MAZE_SIZE); //must free later
 	while (n != root){
 		Node *min_node = n;
 		Direction min_dir = N;

@@ -12,12 +12,19 @@ struct _MOUSE{
 
 typedef struct _MOUSE Mouse;
 
+/** creates a mouse */
 Mouse *create_mouse();
 
-/** base functions the emulate mouse movement calls */
+/** base functions the emulate mouse movement calls*/
 void forward(Mouse *mouse);
+
+/**update row and col numbers given based on dir*/
+void update_pos(Direction dir, int *row, int *col);
+
+/** literally just sets mouse position. pretty useless, but eventually will cause physical mouse to turn */
 void setDir(Mouse *mouse,Direction d);
 
+/** translate a Dir (integer 0=N 1=E 2=S 3=W) into the character representation*/
 char dir_to_char(Direction dir);
 
 /** returns length 4 array of bools. must be freed */

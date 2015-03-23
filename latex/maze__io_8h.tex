@@ -1,0 +1,101 @@
+\section{maze\-\_\-io.\-h File Reference}
+\label{maze__io_8h}\index{maze\-\_\-io.\-h@{maze\-\_\-io.\-h}}
+{\ttfamily \#include \char`\"{}maze.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Maze} $\ast$ {\bf read\-\_\-from\-\_\-file} (F\-I\-L\-E $\ast$f)
+\item 
+void {\bf print\-\_\-maze} ({\bf Maze} $\ast$maze)
+\item 
+void {\bf print\-\_\-pointer\-\_\-maze} ({\bf Maze} $\ast$maze)
+\item 
+void {\bf print\-\_\-weight\-\_\-maze} ({\bf Maze} $\ast$maze)
+\item 
+void {\bf print\-\_\-dist\-\_\-maze} ({\bf Maze} $\ast$maze)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{maze\-\_\-io.\-h@{maze\-\_\-io.\-h}!print\-\_\-dist\-\_\-maze@{print\-\_\-dist\-\_\-maze}}
+\index{print\-\_\-dist\-\_\-maze@{print\-\_\-dist\-\_\-maze}!maze_io.h@{maze\-\_\-io.\-h}}
+\subsubsection[{print\-\_\-dist\-\_\-maze}]{\setlength{\rightskip}{0pt plus 5cm}void print\-\_\-dist\-\_\-maze (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}\label{maze__io_8h_a49b58f3ed2c6a70b8429b5a0bf38fd0f}
+duh 
+
+References \-\_\-\-N\-O\-D\-E\-::distance, get\-\_\-node(), and M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E.
+
+\index{maze\-\_\-io.\-h@{maze\-\_\-io.\-h}!print\-\_\-maze@{print\-\_\-maze}}
+\index{print\-\_\-maze@{print\-\_\-maze}!maze_io.h@{maze\-\_\-io.\-h}}
+\subsubsection[{print\-\_\-maze}]{\setlength{\rightskip}{0pt plus 5cm}void print\-\_\-maze (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}\label{maze__io_8h_a3ab1db60fd8a452f6809fc71215ef9e5}
+prints a maze 
+\begin{DoxyParams}{Parameters}
+{\em maze} & the maze \\
+\hline
+\end{DoxyParams}
+
+
+References get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, S, and W.
+
+
+
+Referenced by main().
+
+\index{maze\-\_\-io.\-h@{maze\-\_\-io.\-h}!print\-\_\-pointer\-\_\-maze@{print\-\_\-pointer\-\_\-maze}}
+\index{print\-\_\-pointer\-\_\-maze@{print\-\_\-pointer\-\_\-maze}!maze_io.h@{maze\-\_\-io.\-h}}
+\subsubsection[{print\-\_\-pointer\-\_\-maze}]{\setlength{\rightskip}{0pt plus 5cm}void print\-\_\-pointer\-\_\-maze (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}\label{maze__io_8h_a0363b78dcedb44a0921ab2928b692e46}
+duh 
+
+References get\-\_\-node(), and M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E.
+
+
+
+Referenced by flood\-\_\-explore().
+
+\index{maze\-\_\-io.\-h@{maze\-\_\-io.\-h}!print\-\_\-weight\-\_\-maze@{print\-\_\-weight\-\_\-maze}}
+\index{print\-\_\-weight\-\_\-maze@{print\-\_\-weight\-\_\-maze}!maze_io.h@{maze\-\_\-io.\-h}}
+\subsubsection[{print\-\_\-weight\-\_\-maze}]{\setlength{\rightskip}{0pt plus 5cm}void print\-\_\-weight\-\_\-maze (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}\label{maze__io_8h_ad2fb98cae96e3f79c137cbc8fbc59d4f}
+duh 
+
+References get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, and \-\_\-\-N\-O\-D\-E\-::weight.
+
+
+
+Referenced by flood\-\_\-fill().
+
+\index{maze\-\_\-io.\-h@{maze\-\_\-io.\-h}!read\-\_\-from\-\_\-file@{read\-\_\-from\-\_\-file}}
+\index{read\-\_\-from\-\_\-file@{read\-\_\-from\-\_\-file}!maze_io.h@{maze\-\_\-io.\-h}}
+\subsubsection[{read\-\_\-from\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Maze}$\ast$ read\-\_\-from\-\_\-file (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{f}
+\end{DoxyParamCaption}
+)}\label{maze__io_8h_a781c6b98a86498bcb6e88e986edd6c95}
+these functions read in a .mz file and parse it into a valid maze overall function to create a maze from file. any error will result in a null return. \begin{DoxyReturn}{Returns}
+a valid maze pointer to the maze struct, null on any sort of error 
+\end{DoxyReturn}
+
+
+References create\-\_\-maze(), E, get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, N, \-\_\-\-N\-O\-D\-E\-::neighbors, S, and W.
+
+
+
+Referenced by main().
+

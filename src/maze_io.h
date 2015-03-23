@@ -18,10 +18,13 @@ Maze *read_from_file(FILE *f);
 */
 void print_maze(Maze *maze);
 
+/** duh*/
 void print_pointer_maze(Maze *maze);
 
+/** duh*/
 void print_weight_maze(Maze *maze);
 
+/** duh*/
 void print_dist_maze(Maze *maze);
 
 #endif

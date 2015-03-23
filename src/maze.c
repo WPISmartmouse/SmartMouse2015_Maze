@@ -1,4 +1,5 @@
 /** maze.c implements the functions used to create, free, and manipulate maze
+	@author Peter Mitrano
 */
 #include "maze.h"
 

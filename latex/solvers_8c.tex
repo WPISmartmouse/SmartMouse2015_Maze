@@ -1,0 +1,234 @@
+\section{solvers.\-c File Reference}
+\label{solvers_8c}\index{solvers.\-c@{solvers.\-c}}
+{\ttfamily \#include \char`\"{}solvers.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bf min}(a, b)~((a) $<$ (b) ? (a) \-: (b))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bf flood\-\_\-explore} ({\bf Maze} $\ast$kmaze)
+\item 
+char $\ast$ {\bf flood\-\_\-fill} ({\bf Maze} $\ast$maze)
+\item 
+void {\bf explore\-\_\-neighbors} ({\bf Node} $\ast$node, {\bf Node} $\ast$goal, int weight, bool $\ast$success)
+\item 
+void {\bf left\-\_\-hand\-\_\-follow} ({\bf Maze} $\ast$maze)
+\item 
+void {\bf mark\-\_\-position} ({\bf Mouse} $\ast$mouse, {\bf Maze} $\ast$maze)
+\item 
+bool {\bf blocked} ({\bf Mouse} $\ast$mouse, {\bf Maze} $\ast$maze)
+\item 
+bool {\bf blocked\-\_\-in\-\_\-dir} (int row, int col, {\bf Direction} dir, {\bf Maze} $\ast$maze)
+\item 
+bool {\bf at\-Center} ({\bf Mouse} $\ast$mouse)
+\item 
+bool {\bf is\-Center} (int row, int col)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{solvers.\-c@{solvers.\-c}!min@{min}}
+\index{min@{min}!solvers.c@{solvers.\-c}}
+\subsubsection[{min}]{\setlength{\rightskip}{0pt plus 5cm}\#define min(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)~((a) $<$ (b) ? (a) \-: (b))}\label{solvers_8c_ac6afabdc09a49a433ee19d8a9486056d}
+\doxyref{solvers.\-h}{p.}{solvers_8h} \begin{DoxyAuthor}{Author}
+Peter Mitrano 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{solvers.\-c@{solvers.\-c}!at\-Center@{at\-Center}}
+\index{at\-Center@{at\-Center}!solvers.c@{solvers.\-c}}
+\subsubsection[{at\-Center}]{\setlength{\rightskip}{0pt plus 5cm}bool at\-Center (
+\begin{DoxyParamCaption}
+\item[{{\bf Mouse} $\ast$}]{mouse}
+\end{DoxyParamCaption}
+)}\label{solvers_8c_aedb34a6bb8ea734cac8daa329c55e504}
+checks if the mouse is int the center 4 squares of the maze 
+\begin{DoxyParams}{Parameters}
+{\em mouse} & the mouse \\
+\hline
+\end{DoxyParams}
+
+
+References \-\_\-\-M\-O\-U\-S\-E\-::col, is\-Center(), and \-\_\-\-M\-O\-U\-S\-E\-::row.
+
+
+
+Referenced by left\-\_\-hand\-\_\-follow().
+
+\index{solvers.\-c@{solvers.\-c}!blocked@{blocked}}
+\index{blocked@{blocked}!solvers.c@{solvers.\-c}}
+\subsubsection[{blocked}]{\setlength{\rightskip}{0pt plus 5cm}bool blocked (
+\begin{DoxyParamCaption}
+\item[{{\bf Mouse} $\ast$}]{mouse, }
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}\label{solvers_8c_a0e8cf310b6946e581c68bfc3517ebecb}
+checks the mouses direction, and compares it to the mazes walls. For example, if the mouse is facing north, and the node it's on has a null north pointer, then there's a wall 
+\begin{DoxyParams}{Parameters}
+{\em mouse} & the mouse \\
+\hline
+{\em maze} & the maze \\
+\hline
+\end{DoxyParams}
+
+
+References blocked\-\_\-in\-\_\-dir(), \-\_\-\-M\-O\-U\-S\-E\-::col, \-\_\-\-M\-O\-U\-S\-E\-::dir, and \-\_\-\-M\-O\-U\-S\-E\-::row.
+
+\index{solvers.\-c@{solvers.\-c}!blocked\-\_\-in\-\_\-dir@{blocked\-\_\-in\-\_\-dir}}
+\index{blocked\-\_\-in\-\_\-dir@{blocked\-\_\-in\-\_\-dir}!solvers.c@{solvers.\-c}}
+\subsubsection[{blocked\-\_\-in\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}bool blocked\-\_\-in\-\_\-dir (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{col, }
+\item[{{\bf Direction}}]{dir, }
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}\label{solvers_8c_a575f31d46d6dd53cfe3709dc3df49d4d}
+checks a direction, and compares it to the mazes walls. For example, if the mouse is facing north, and the node it's on has a null north pointer, then there's a wall 
+\begin{DoxyParams}{Parameters}
+{\em mouse} & the mouse \\
+\hline
+{\em maze} & the maze \\
+\hline
+\end{DoxyParams}
+
+
+References \-\_\-\-M\-O\-U\-S\-E\-::col, \-\_\-\-M\-O\-U\-S\-E\-::dir, \-\_\-\-N\-O\-D\-E\-::neighbors, \-\_\-\-M\-A\-Z\-E\-::nodes, and \-\_\-\-M\-O\-U\-S\-E\-::row.
+
+
+
+Referenced by blocked(), and left\-\_\-hand\-\_\-follow().
+
+\index{solvers.\-c@{solvers.\-c}!explore\-\_\-neighbors@{explore\-\_\-neighbors}}
+\index{explore\-\_\-neighbors@{explore\-\_\-neighbors}!solvers.c@{solvers.\-c}}
+\subsubsection[{explore\-\_\-neighbors}]{\setlength{\rightskip}{0pt plus 5cm}void explore\-\_\-neighbors (
+\begin{DoxyParamCaption}
+\item[{{\bf Node} $\ast$}]{node, }
+\item[{{\bf Node} $\ast$}]{goal, }
+\item[{int}]{weight, }
+\item[{bool $\ast$}]{success}
+\end{DoxyParamCaption}
+)}\label{solvers_8c_a2a287d256a52d61e3e265d78823d8bbd}
+this assigns n-\/$>$weight+1 to each neighbor, and recursively calls it on all valid neighbors 
+\begin{DoxyParams}{Parameters}
+{\em node} & the node to explore the neighbors of \\
+\hline
+{\em goal} & the node you want to find a path to \\
+\hline
+{\em weight} & the weight to set the node to \\
+\hline
+{\em success} & should be false to start, and will be set to true if path to goal is found \\
+\hline
+\end{DoxyParams}
+
+
+References explore\-\_\-neighbors(), \-\_\-\-N\-O\-D\-E\-::known, \-\_\-\-N\-O\-D\-E\-::neighbors, and \-\_\-\-N\-O\-D\-E\-::weight.
+
+
+
+Referenced by explore\-\_\-neighbors(), and flood\-\_\-fill().
+
+\index{solvers.\-c@{solvers.\-c}!flood\-\_\-explore@{flood\-\_\-explore}}
+\index{flood\-\_\-explore@{flood\-\_\-explore}!solvers.c@{solvers.\-c}}
+\subsubsection[{flood\-\_\-explore}]{\setlength{\rightskip}{0pt plus 5cm}void flood\-\_\-explore (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{kmaze}
+\end{DoxyParamCaption}
+)}\label{solvers_8c_a4f06bae1b5a4e1ab9f8dea6fba582b61}
+
+
+References \-\_\-\-M\-O\-U\-S\-E\-::col, create\-\_\-maze(), create\-\_\-mouse(), E, flood\-\_\-fill(), get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, N, \-\_\-\-N\-O\-D\-E\-::neighbors, print\-\_\-pointer\-\_\-maze(), \-\_\-\-M\-O\-U\-S\-E\-::row, S, sense(), update\-\_\-pos(), and W.
+
+
+
+Referenced by main().
+
+\index{solvers.\-c@{solvers.\-c}!flood\-\_\-fill@{flood\-\_\-fill}}
+\index{flood\-\_\-fill@{flood\-\_\-fill}!solvers.c@{solvers.\-c}}
+\subsubsection[{flood\-\_\-fill}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ flood\-\_\-fill (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}\label{solvers_8c_a1a13c8340e1d0386605b4757fc260bba}
+set starting point 0,0 \& S. depth-\/first search of all nodes in the grid, adding 1 each time. once all nodes are discovered, the path is solved by going backwards from the center to the lowest neighbor each time 
+\begin{DoxyParams}{Parameters}
+{\em maze} & maze to solve \\
+\hline
+\end{DoxyParams}
+
+
+References dir\-\_\-to\-\_\-char(), explore\-\_\-neighbors(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, N, \-\_\-\-N\-O\-D\-E\-::neighbors, print\-\_\-weight\-\_\-maze(), and \-\_\-\-N\-O\-D\-E\-::weight.
+
+
+
+Referenced by flood\-\_\-explore().
+
+\index{solvers.\-c@{solvers.\-c}!is\-Center@{is\-Center}}
+\index{is\-Center@{is\-Center}!solvers.c@{solvers.\-c}}
+\subsubsection[{is\-Center}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-Center (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{col}
+\end{DoxyParamCaption}
+)}\label{solvers_8c_a60dc5cbd515fa63d17ad58b0764afcaa}
+checks if the row col is at center 
+\begin{DoxyParams}{Parameters}
+{\em mouse} & the mouse \\
+\hline
+\end{DoxyParams}
+
+
+References M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E.
+
+
+
+Referenced by at\-Center().
+
+\index{solvers.\-c@{solvers.\-c}!left\-\_\-hand\-\_\-follow@{left\-\_\-hand\-\_\-follow}}
+\index{left\-\_\-hand\-\_\-follow@{left\-\_\-hand\-\_\-follow}!solvers.c@{solvers.\-c}}
+\subsubsection[{left\-\_\-hand\-\_\-follow}]{\setlength{\rightskip}{0pt plus 5cm}void left\-\_\-hand\-\_\-follow (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}\label{solvers_8c_a72821f7dc28427499d6b1e2f8f4110c5}
+set starting point to 0,0. follow left hand wall 
+\begin{DoxyParams}{Parameters}
+{\em maze} & maze to solve \\
+\hline
+\end{DoxyParams}
+
+
+References at\-Center(), blocked\-\_\-in\-\_\-dir(), \-\_\-\-M\-O\-U\-S\-E\-::col, create\-\_\-mouse(), \-\_\-\-M\-O\-U\-S\-E\-::dir, dir\-\_\-to\-\_\-char(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, forward(), \-\_\-\-N\-O\-D\-E\-::known, mark\-\_\-position(), \-\_\-\-M\-A\-Z\-E\-::nodes, and \-\_\-\-M\-O\-U\-S\-E\-::row.
+
+\index{solvers.\-c@{solvers.\-c}!mark\-\_\-position@{mark\-\_\-position}}
+\index{mark\-\_\-position@{mark\-\_\-position}!solvers.c@{solvers.\-c}}
+\subsubsection[{mark\-\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}void mark\-\_\-position (
+\begin{DoxyParamCaption}
+\item[{{\bf Mouse} $\ast$}]{mouse, }
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}\label{solvers_8c_a9d0255746315967b6b83ed1dceffb8c9}
+marks the mouses given position as known 
+\begin{DoxyParams}{Parameters}
+{\em mouse} & the mouse \\
+\hline
+{\em maze} & the maze \\
+\hline
+\end{DoxyParams}
+
+
+References \-\_\-\-M\-O\-U\-S\-E\-::col, \-\_\-\-N\-O\-D\-E\-::known, \-\_\-\-M\-A\-Z\-E\-::nodes, and \-\_\-\-M\-O\-U\-S\-E\-::row.
+
+
+
+Referenced by left\-\_\-hand\-\_\-follow().
+

@@ -6,17 +6,29 @@
 #include "mouse.h"
 #include <stdbool.h>
 
+/*not used */
 void A_star(Maze *maze, int x0, int y0, int x1, int y1);
 
+/*not used */
 Node *closest_unknown(Maze *maze);	
 
+/** Not used
+*/
 void update_neighbors(Node *node);
+
+
+//starts at 0,0 and explores the whole maze
+//kmaze is the known maze, and is used to "read the sensors"
+//The mouse solves the maze after sensing each new square
+//it solves assuming ALL walls, and assuming NO walls
+//when the solution for those two mazes are the same, then it knows the fastest route
+void flood_explore(Maze *kmaze);
 
 /** set starting point 0,0 & S. depth-first search of all nodes in the grid, adding 1 each time.
 * once all nodes are discovered, the path is solved by going backwards from the center to the lowest neighbor each time
 * @param maze maze to solve
 */
-void flood_fill(Maze *maze);
+char *flood_fill(Maze *maze);
 
 /**this assigns n->weight+1 to each neighbor, and recursively calls it on all valid neighbors
 * @param node the node to explore the neighbors of
