@@ -1,0 +1,126 @@
+\section{mouse.\-h File Reference}
+\label{mouse_8h}\index{mouse.\-h@{mouse.\-h}}
+{\ttfamily \#include \char`\"{}maze.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct {\bf \-\_\-\-M\-O\-U\-S\-E}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct {\bf \-\_\-\-M\-O\-U\-S\-E} {\bf Mouse}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Mouse} $\ast$ {\bf create\-\_\-mouse} ()
+\item 
+void {\bf forward} ({\bf Mouse} $\ast$mouse)
+\item 
+void {\bf update\-\_\-pos} ({\bf Direction} dir, int $\ast$row, int $\ast$col)
+\item 
+void {\bf set\-Dir} ({\bf Mouse} $\ast$mouse, {\bf Direction} d)
+\item 
+char {\bf dir\-\_\-to\-\_\-char} ({\bf Direction} dir)
+\item 
+bool $\ast$ {\bf sense} ({\bf Maze} $\ast$maze, {\bf Mouse} $\ast$mouse)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{mouse.\-h@{mouse.\-h}!Mouse@{Mouse}}
+\index{Mouse@{Mouse}!mouse.h@{mouse.\-h}}
+\subsubsection[{Mouse}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf \-\_\-\-M\-O\-U\-S\-E} {\bf Mouse}}\label{mouse_8h_abb5928e9a831a8f44279a4263ac3b13d}
+
+
+\subsection{Function Documentation}
+\index{mouse.\-h@{mouse.\-h}!create\-\_\-mouse@{create\-\_\-mouse}}
+\index{create\-\_\-mouse@{create\-\_\-mouse}!mouse.h@{mouse.\-h}}
+\subsubsection[{create\-\_\-mouse}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Mouse}$\ast$ create\-\_\-mouse (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{mouse_8h_a746cb478532b016b28ad06f8e03b22bc}
+creates a mouse 
+
+References \-\_\-\-M\-O\-U\-S\-E\-::col, \-\_\-\-M\-O\-U\-S\-E\-::dir, \-\_\-\-M\-O\-U\-S\-E\-::row, and S.
+
+
+
+Referenced by flood\-\_\-explore(), and left\-\_\-hand\-\_\-follow().
+
+\index{mouse.\-h@{mouse.\-h}!dir\-\_\-to\-\_\-char@{dir\-\_\-to\-\_\-char}}
+\index{dir\-\_\-to\-\_\-char@{dir\-\_\-to\-\_\-char}!mouse.h@{mouse.\-h}}
+\subsubsection[{dir\-\_\-to\-\_\-char}]{\setlength{\rightskip}{0pt plus 5cm}char dir\-\_\-to\-\_\-char (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{dir}
+\end{DoxyParamCaption}
+)}\label{mouse_8h_ab02210c2feef5e25235fc2f76fb50ce1}
+translate a Dir (integer 0=N 1=E 2=S 3=W) into the character representation 
+
+References E, N, S, and W.
+
+
+
+Referenced by flood\-\_\-fill(), and left\-\_\-hand\-\_\-follow().
+
+\index{mouse.\-h@{mouse.\-h}!forward@{forward}}
+\index{forward@{forward}!mouse.h@{mouse.\-h}}
+\subsubsection[{forward}]{\setlength{\rightskip}{0pt plus 5cm}void forward (
+\begin{DoxyParamCaption}
+\item[{{\bf Mouse} $\ast$}]{mouse}
+\end{DoxyParamCaption}
+)}\label{mouse_8h_a80f07cf3d2e5deca9af6a1cf00fa145b}
+base functions the emulate mouse movement calls 
+
+References \-\_\-\-M\-O\-U\-S\-E\-::col, \-\_\-\-M\-O\-U\-S\-E\-::dir, \-\_\-\-M\-O\-U\-S\-E\-::row, and update\-\_\-pos().
+
+
+
+Referenced by left\-\_\-hand\-\_\-follow().
+
+\index{mouse.\-h@{mouse.\-h}!sense@{sense}}
+\index{sense@{sense}!mouse.h@{mouse.\-h}}
+\subsubsection[{sense}]{\setlength{\rightskip}{0pt plus 5cm}bool$\ast$ sense (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze, }
+\item[{{\bf Mouse} $\ast$}]{mouse}
+\end{DoxyParamCaption}
+)}\label{mouse_8h_ab3e3d1a3332a082c83f9e9e5aac30aae}
+returns length 4 array of bools. must be freed
+
+true means a wall exists 
+
+References \-\_\-\-M\-O\-U\-S\-E\-::col, get\-\_\-node(), \-\_\-\-N\-O\-D\-E\-::neighbors, and \-\_\-\-M\-O\-U\-S\-E\-::row.
+
+
+
+Referenced by flood\-\_\-explore().
+
+\index{mouse.\-h@{mouse.\-h}!set\-Dir@{set\-Dir}}
+\index{set\-Dir@{set\-Dir}!mouse.h@{mouse.\-h}}
+\subsubsection[{set\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Dir (
+\begin{DoxyParamCaption}
+\item[{{\bf Mouse} $\ast$}]{mouse, }
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}\label{mouse_8h_a4d00ab47068297c22c8a90c7b1dc4b6b}
+literally just sets mouse position. pretty useless, but eventually will cause physical mouse to turn \index{mouse.\-h@{mouse.\-h}!update\-\_\-pos@{update\-\_\-pos}}
+\index{update\-\_\-pos@{update\-\_\-pos}!mouse.h@{mouse.\-h}}
+\subsubsection[{update\-\_\-pos}]{\setlength{\rightskip}{0pt plus 5cm}void update\-\_\-pos (
+\begin{DoxyParamCaption}
+\item[{{\bf Direction}}]{dir, }
+\item[{int $\ast$}]{row, }
+\item[{int $\ast$}]{col}
+\end{DoxyParamCaption}
+)}\label{mouse_8h_a3a5aea5e15cefc3afa3c71706929cf84}
+update row and col numbers given based on dir 
+
+References E, N, S, and W.
+
+
+
+Referenced by flood\-\_\-explore(), and forward().
+
