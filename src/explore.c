@@ -38,5 +38,8 @@ int main(){
 
 	flood_explore(maze);
 	
+	free_maze(maze);
+	fclose(f);
+
 	return EXIT_SUCCESS;
 }

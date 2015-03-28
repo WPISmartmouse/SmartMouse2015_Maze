@@ -69,26 +69,51 @@ void flood_explore(Maze *kmaze){
 			}
 		}
 
+		//don't need the walls anymore
+		free(walls);
+
 		//solve flood fill on the two mazes
 		flood_fill_custom(no_wall_maze,no_wall_path,mouse->row,mouse->col);
-		
 		flood_fill_custom(all_wall_maze,all_wall_path,mouse->row,mouse->col);
+		//solve from origin
+		flood_fill(no_wall_maze,no_wall_maze->fastest_route);
+		flood_fill(all_wall_maze,all_wall_maze->fastest_route);
 
+/**
+	use args to the make command to print more information
+	ARGS=-DDEBUG  prints just the mouse position
+	ARGS=-DDEBUG_FULL prints mazes, paths, and mouse positions
+	ARGS=-DDEBUG_PATH prints just paths
+*/
+#if defined(DEBUG_PATH) || defined(DEBUG_FULL)
 		printf("no wall path  = %s\n",no_wall_path);
 		printf("all wall path = %s\n",all_wall_path);
+		printf("no wall path (from 0,0) = %s\n",no_wall_maze->fastest_route);
+		printf("all wall path (from 0,0)= %s\n",all_wall_maze->fastest_route);
+#endif
 
 
 		//execute the first instruction of the path!
+		//this will make the calls the forward() and turn_to_face()
 		execute_command(mouse,*no_wall_path);
+#if defined(DEBUG_FULL) || defined(DEBUG)
 		printf("mouse position (%i:%i)\n",mouse->row,mouse->col);
+#endif
+	
 	}
-	while (no_wall_path != all_wall_path);
+	while (strcmp(no_wall_maze->fastest_route,all_wall_maze->fastest_route));
 
+	//this is the final solution which represents how the mouse should travel from start to finish
+	printf("SOLUTION = %s\n",all_wall_maze->fastest_route);
 
-	free(all_wall_path);
+	free(mouse);
 	free(no_wall_path);
+	free(all_wall_path);
+	free_maze(no_wall_maze);
+	free_maze(all_wall_maze);
 }
 
+//this should be used if you just want to start at 0,0
 void flood_fill(Maze *maze, char *path){
 	flood_fill_custom(maze,path,0,0);
 }
@@ -114,9 +139,9 @@ void flood_fill_custom(Maze *maze, char *path, int r0, int c0){
 	bool success = false;
 	explore_neighbors(n, center, 0, &success);
 
-#ifdef DEBUG
-//	print_weight_maze(maze);
-//	print_maze(maze);
+#if defined(DEBUG_FULL)
+	print_weight_maze(maze);
+	print_maze(maze);
 #endif
 
 	if (!success){
@@ -150,9 +175,10 @@ void flood_fill_custom(Maze *maze, char *path, int r0, int c0){
 	}
 	*r_p = '\0';
 	r_p = r_path;
-	
+
 	//the create path is from goal to start, so now we "reverse" it
-	char* p = path;
+	char* p = path + strlen(r_p);
+    *(p--) = '\0';
 	while ((*r_p) != '\0'){
 		char c;
 		switch(*r_p){
@@ -161,9 +187,11 @@ void flood_fill_custom(Maze *maze, char *path, int r0, int c0){
 			case 'S':c='N';break;
 			case 'W':c='E';break;
 		}
-		*(p++) = c;
+		*(p--) = c;
 		r_p++;
 	}
+
+	free(r_path);
 }
 
 

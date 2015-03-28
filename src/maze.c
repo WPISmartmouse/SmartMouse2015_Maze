@@ -40,7 +40,12 @@ bool visited(int row, int col, Direction dir, Maze *maze){
 
 bool free_maze(Maze *maze){
 	free(maze->fastest_route);
-	free(maze->nodes);
+	int i,j;
+	for (i=0;i<MAZE_SIZE;i++){
+		for (j=0;j<MAZE_SIZE;j++){
+			free(maze->nodes[i][j]);
+		}
+	}
 	free(maze);
 	return true;
 }

@@ -82,6 +82,7 @@ void print_maze(Maze *maze){
 		*(s++) = '|';
 		*s = '\0';
 		printf("%s\n",str);
+		free(str);
 	}
 }
 

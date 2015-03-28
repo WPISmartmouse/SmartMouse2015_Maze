@@ -4,21 +4,33 @@
 #include "maze.h"
 #include <stdlib.h>
 
+/** \brief depresents a mouse
+ * don't ever change the row/col of a mouse directly. This prevents it from working on the real robot
+ * use forward and turn_to_face to move the mouse around. Once those functions work on the real robot it will port over fluidly
+ */
 struct _MOUSE{
 	int row;
 	int col;
-	Direction dir; //please don't set this directly, it's gonna mess things up. use setDir
+	Direction dir;
 };
 
 typedef struct _MOUSE Mouse;
 
-/** creates a mouse */
+/** \biref allocates and initializes a mouse
+ * be sure to free this mouse once you're done with it
+ * @return the mouse
+*/
 Mouse *create_mouse();
 
-/** takse the given character and moves in that direction **/
+/** takes the given character and moves in that direction 
+ * @param mouse the mouse to move with
+ * @param dir_char the direciton do drive: 'N', 'E', 'S', or 'W'
+ */
 void execute_command(Mouse *mouse, char dir_char);
 
-/** base functions the emulate mouse movement calls*/
+/** base functions the emulate mouse movement calls
+
+*/
 void forward(Mouse *mouse);
 
 /**update row and col numbers given based on dir*/
