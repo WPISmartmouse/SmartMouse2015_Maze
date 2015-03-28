@@ -10,7 +10,7 @@
 \begin{DoxyCompactItemize}
 \item 
 void {\bf flood\-\_\-explore} ({\bf Maze} $\ast$kmaze)
-\item 
+\begin{DoxyCompactList}\small\item\em starts at 0,0 and explores the whole maze kmaze is the known maze, and is used to \char`\"{}read the sensors\char`\"{} The mouse solves the maze after sensing each new square solves assuming A\-L\-L walls, and assuming N\-O walls when the solution for those two mazes are the same, then it knows the fastest route \end{DoxyCompactList}\item 
 void {\bf flood\-\_\-fill} ({\bf Maze} $\ast$maze, char $\ast$path)
 \item 
 void {\bf flood\-\_\-fill\-\_\-custom} ({\bf Maze} $\ast$maze, char $\ast$path, int r0, int c0)
@@ -146,6 +146,15 @@ Referenced by explore\-\_\-neighbors(), and flood\-\_\-fill\-\_\-custom().
 \item[{{\bf Maze} $\ast$}]{kmaze}
 \end{DoxyParamCaption}
 )}\label{solvers_8c_a4f06bae1b5a4e1ab9f8dea6fba582b61}
+
+
+starts at 0,0 and explores the whole maze kmaze is the known maze, and is used to \char`\"{}read the sensors\char`\"{} The mouse solves the maze after sensing each new square solves assuming A\-L\-L walls, and assuming N\-O walls when the solution for those two mazes are the same, then it knows the fastest route 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kmaze} & the known maze. in reality this won't exist because the sensors can read from the real world \\
+\hline
+\end{DoxyParams}
 use args to the make command to print more information A\-R\-G\-S=-\/\-D\-D\-E\-B\-U\-G prints just the mouse position A\-R\-G\-S=-\/\-D\-D\-E\-B\-U\-G\-\_\-\-F\-U\-L\-L prints mazes, paths, and mouse positions A\-R\-G\-S=-\/\-D\-D\-E\-B\-U\-G\-\_\-\-P\-A\-T\-H prints just paths
 
 References \-\_\-\-M\-O\-U\-S\-E\-::col, create\-\_\-maze(), create\-\_\-mouse(), E, execute\-\_\-command(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, flood\-\_\-fill(), flood\-\_\-fill\-\_\-custom(), free\-\_\-maze(), get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, N, \-\_\-\-N\-O\-D\-E\-::neighbors, P\-A\-T\-H\-\_\-\-S\-I\-Z\-E, \-\_\-\-M\-O\-U\-S\-E\-::row, S, sense(), update\-\_\-pos(), and W.
@@ -165,6 +174,8 @@ Referenced by main().
 set starting point 0,0 \& S. depth-\/first search of all nodes in the grid, adding 1 each time. once all nodes are discovered, the path is solved by going backwards from the center to the lowest neighbor each time 
 \begin{DoxyParams}{Parameters}
 {\em maze} & maze to solve \\
+\hline
+{\em path} & an allocate char$\ast$ of at least P\-A\-T\-H\-\_\-\-S\-I\-Z\-E to store the solution in \\
 \hline
 \end{DoxyParams}
 
@@ -186,6 +197,17 @@ Referenced by flood\-\_\-explore().
 \end{DoxyParamCaption}
 )}\label{solvers_8c_a39a0eee37eb0bf26269344711aa51df2}
 this one also allows you to specify a starting position other tha 0,0 
+\begin{DoxyParams}{Parameters}
+{\em maze} & the maze the solve \\
+\hline
+{\em path} & an allocate char$\ast$ of at least P\-A\-T\-H\-\_\-\-S\-I\-Z\-E to store the solution in \\
+\hline
+{\em r0} & the row to start in \\
+\hline
+{\em c0} & the column to start in \\
+\hline
+\end{DoxyParams}
+
 
 References dir\-\_\-to\-\_\-char(), explore\-\_\-neighbors(), get\-\_\-node(), \-\_\-\-N\-O\-D\-E\-::known, M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, N, \-\_\-\-N\-O\-D\-E\-::neighbors, \-\_\-\-M\-A\-Z\-E\-::nodes, P\-A\-T\-H\-\_\-\-S\-I\-Z\-E, print\-\_\-maze(), print\-\_\-weight\-\_\-maze(), and \-\_\-\-N\-O\-D\-E\-::weight.
 
