@@ -85,20 +85,27 @@ void print_maze(Maze *maze){
 	}
 }
 
+void print_neighbor_maze(Maze *maze){
+	int i,j;
+	for (i=0;i<MAZE_SIZE;i++){
+		for (j=0;j<MAZE_SIZE;j++){
+			int d;
+			for (d=0;d<4;d++){
+				bool wall = (maze->nodes[i][j]->neighbors[d] == NULL);
+				printf("%i",wall);
+			}
+			printf(" ");
+		}
+		printf("\n");
+	}	
+}
+
 void print_weight_maze(Maze *maze){
 	int i,j;
 	for (i=0;i<MAZE_SIZE;i++){
 		for (j=0;j<MAZE_SIZE;j++){
-			int w = get_node(maze,i,j)->weight;
-			if (w<10){
-				printf("  %d ",w);
-			}
-			else if (w<100){
-				printf(" %d ",w);
-			}
-			else {
-				printf("%d ",w);
-			}
+			int w = maze->nodes[i][j]->weight;
+			printf("%03d ",w);	
 		}
 		printf("\n");
 	}

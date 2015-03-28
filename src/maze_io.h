@@ -21,6 +21,13 @@ void print_maze(Maze *maze);
 /** duh*/
 void print_pointer_maze(Maze *maze);
 
+/** prints each node as a list of booleans
+EX)  0010 would mean on wall South
+     1011 would mean walls to the North, South, and West
+
+*/
+void print_neighbor_maze(Maze *maze);
+
 /** duh*/
 void print_weight_maze(Maze *maze);
 

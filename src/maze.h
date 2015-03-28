@@ -2,6 +2,7 @@
 #define MAZE_H
 
 #define MAZE_SIZE (16)
+#define PATH_SIZE (100)
 
 #include <stdlib.h>
 #include <stdio.h>

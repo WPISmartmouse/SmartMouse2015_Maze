@@ -14,6 +14,8 @@ struct {\bf \-\_\-\-M\-A\-Z\-E}
 \begin{DoxyCompactItemize}
 \item 
 \#define {\bf M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E}~(16)
+\item 
+\#define {\bf P\-A\-T\-H\-\_\-\-S\-I\-Z\-E}~(100)
 \end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -56,7 +58,14 @@ bool {\bf free\-\_\-node} ({\bf Node} $\ast$node)
 \subsubsection[{M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E~(16)}\label{maze_8h_a435c893b3d82298d514a7c5f1e433bff}
 
 
-Referenced by create\-\_\-maze(), flood\-\_\-explore(), flood\-\_\-fill(), is\-Center(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-pointer\-\_\-maze(), print\-\_\-weight\-\_\-maze(), and read\-\_\-from\-\_\-file().
+Referenced by create\-\_\-maze(), flood\-\_\-explore(), get\-\_\-node(), is\-Center(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-pointer\-\_\-maze(), print\-\_\-weight\-\_\-maze(), and read\-\_\-from\-\_\-file().
+
+\index{maze.\-h@{maze.\-h}!P\-A\-T\-H\-\_\-\-S\-I\-Z\-E@{P\-A\-T\-H\-\_\-\-S\-I\-Z\-E}}
+\index{P\-A\-T\-H\-\_\-\-S\-I\-Z\-E@{P\-A\-T\-H\-\_\-\-S\-I\-Z\-E}!maze.h@{maze.\-h}}
+\subsubsection[{P\-A\-T\-H\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-T\-H\-\_\-\-S\-I\-Z\-E~(100)}\label{maze_8h_ae78bf7e06bbba1c42b740fef55cf20f8}
+
+
+Referenced by create\-\_\-maze(), and flood\-\_\-explore().
 
 
 
@@ -109,7 +118,7 @@ Peter Mitrano
 \end{DoxyAuthor}
 
 
-References create\-\_\-node(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, \-\_\-\-M\-A\-Z\-E\-::nodes, and \-\_\-\-M\-A\-Z\-E\-::solved.
+References create\-\_\-node(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, \-\_\-\-M\-A\-Z\-E\-::nodes, P\-A\-T\-H\-\_\-\-S\-I\-Z\-E, and \-\_\-\-M\-A\-Z\-E\-::solved.
 
 
 
@@ -124,7 +133,7 @@ Referenced by flood\-\_\-explore(), and read\-\_\-from\-\_\-file().
 )}\label{maze_8h_ab59097ab48a1e883285ed6d3f851e867}
 allocates a node setting all nighbors to null. Function does N\-O\-T allocate for neighbors. 
 
-References E, \-\_\-\-N\-O\-D\-E\-::known, N, \-\_\-\-N\-O\-D\-E\-::neighbors, S, and W.
+References E, \-\_\-\-N\-O\-D\-E\-::known, N, \-\_\-\-N\-O\-D\-E\-::neighbors, S, W, and \-\_\-\-N\-O\-D\-E\-::weight.
 
 
 
@@ -169,7 +178,7 @@ free's a node
 )}\label{maze_8h_ac38aff6bc69f390a53255c8d9dff9f2c}
 get node by its position 
 
-References \-\_\-\-M\-A\-Z\-E\-::nodes.
+References M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, and \-\_\-\-M\-A\-Z\-E\-::nodes.
 
 
 

@@ -26,6 +26,7 @@
 #include "maze.h"
 #include "maze_io.h"
 #include "solvers.h"
+#include <time.h>
 
 int main(){
 

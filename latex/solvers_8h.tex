@@ -2,6 +2,7 @@
 \label{solvers_8h}\index{solvers.\-h@{solvers.\-h}}
 {\ttfamily \#include \char`\"{}maze.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}mouse.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}maze\-\_\-io.\-h\char`\"{}}\\*
 {\ttfamily \#include $<$stdbool.\-h$>$}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -14,7 +15,7 @@ void {\bf update\-\_\-neighbors} ({\bf Node} $\ast$node)
 \item 
 void {\bf flood\-\_\-explore} ({\bf Maze} $\ast$kmaze)
 \item 
-char $\ast$ {\bf flood\-\_\-fill} ({\bf Maze} $\ast$maze)
+void {\bf flood\-\_\-fill} ({\bf Maze} $\ast$maze, char $\ast$path)
 \item 
 void {\bf explore\-\_\-neighbors} ({\bf Node} $\ast$node, {\bf Node} $\ast$goal, int weight, bool $\ast$success)
 \item 
@@ -168,7 +169,7 @@ Referenced by explore\-\_\-neighbors(), and flood\-\_\-fill().
 )}\label{solvers_8h_a4f06bae1b5a4e1ab9f8dea6fba582b61}
 
 
-References \-\_\-\-M\-O\-U\-S\-E\-::col, create\-\_\-maze(), create\-\_\-mouse(), E, flood\-\_\-fill(), get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, N, \-\_\-\-N\-O\-D\-E\-::neighbors, print\-\_\-pointer\-\_\-maze(), \-\_\-\-M\-O\-U\-S\-E\-::row, S, sense(), update\-\_\-pos(), and W.
+References \-\_\-\-M\-O\-U\-S\-E\-::col, create\-\_\-maze(), create\-\_\-mouse(), E, flood\-\_\-fill(), get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, N, \-\_\-\-N\-O\-D\-E\-::neighbors, P\-A\-T\-H\-\_\-\-S\-I\-Z\-E, \-\_\-\-M\-O\-U\-S\-E\-::row, S, sense(), update\-\_\-pos(), and W.
 
 
 
@@ -176,11 +177,12 @@ Referenced by main().
 
 \index{solvers.\-h@{solvers.\-h}!flood\-\_\-fill@{flood\-\_\-fill}}
 \index{flood\-\_\-fill@{flood\-\_\-fill}!solvers.h@{solvers.\-h}}
-\subsubsection[{flood\-\_\-fill}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ flood\-\_\-fill (
+\subsubsection[{flood\-\_\-fill}]{\setlength{\rightskip}{0pt plus 5cm}void flood\-\_\-fill (
 \begin{DoxyParamCaption}
-\item[{{\bf Maze} $\ast$}]{maze}
+\item[{{\bf Maze} $\ast$}]{maze, }
+\item[{char $\ast$}]{path}
 \end{DoxyParamCaption}
-)}\label{solvers_8h_a1a13c8340e1d0386605b4757fc260bba}
+)}\label{solvers_8h_a9d77a93550779e2bee89f436522e50b4}
 set starting point 0,0 \& S. depth-\/first search of all nodes in the grid, adding 1 each time. once all nodes are discovered, the path is solved by going backwards from the center to the lowest neighbor each time 
 \begin{DoxyParams}{Parameters}
 {\em maze} & maze to solve \\
@@ -188,7 +190,7 @@ set starting point 0,0 \& S. depth-\/first search of all nodes in the grid, addi
 \end{DoxyParams}
 
 
-References dir\-\_\-to\-\_\-char(), explore\-\_\-neighbors(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, N, \-\_\-\-N\-O\-D\-E\-::neighbors, print\-\_\-weight\-\_\-maze(), and \-\_\-\-N\-O\-D\-E\-::weight.
+References dir\-\_\-to\-\_\-char(), explore\-\_\-neighbors(), get\-\_\-node(), N, \-\_\-\-N\-O\-D\-E\-::neighbors, print\-\_\-weight\-\_\-maze(), and \-\_\-\-N\-O\-D\-E\-::weight.
 
 
 

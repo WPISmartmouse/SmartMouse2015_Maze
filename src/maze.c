@@ -6,7 +6,7 @@
 Maze *create_maze(){
 	Maze *maze = malloc(sizeof(Maze));
 	maze->solved = false;
-	maze->fastest_route = malloc(MAZE_SIZE*MAZE_SIZE*sizeof(char)); //assume really bad route--visits all squares.
+	maze->fastest_route = malloc(PATH_SIZE*sizeof(char)); //assume really bad route--visits all squares.
 	int i,j;
 	for (i=0;i<MAZE_SIZE;i++){
 		for (j=0;j<MAZE_SIZE;j++){
@@ -19,6 +19,7 @@ Maze *create_maze(){
 Node *create_node(){
 	Node *node = malloc(sizeof(Node));
 	node->known = false;
+	node->weight = -2;
 	node->neighbors[N]=NULL;
 	node->neighbors[S]=NULL;
 	node->neighbors[E]=NULL;
@@ -27,6 +28,9 @@ Node *create_node(){
 }
 
 Node *get_node(Maze *maze, int row, int col){
+	if (col < 0 || col >= MAZE_SIZE || row < 0 || row >= MAZE_SIZE){
+		return NULL;
+	}
 	return maze->nodes[row][col];
 }
 

@@ -4,6 +4,7 @@
 
 #include "maze.h"
 #include "mouse.h"
+#include "maze_io.h"
 #include <stdbool.h>
 
 /*not used */
@@ -28,7 +29,7 @@ void flood_explore(Maze *kmaze);
 * once all nodes are discovered, the path is solved by going backwards from the center to the lowest neighbor each time
 * @param maze maze to solve
 */
-char *flood_fill(Maze *maze);
+void flood_fill(Maze *maze, char *path);
 
 /**this assigns n->weight+1 to each neighbor, and recursively calls it on all valid neighbors
 * @param node the node to explore the neighbors of
