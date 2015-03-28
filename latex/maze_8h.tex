@@ -7,14 +7,14 @@
 \begin{DoxyCompactItemize}
 \item 
 struct {\bf \-\_\-\-N\-O\-D\-E}
-\item 
+\begin{DoxyCompactList}\small\item\em holds its location \& neighbors, as well as a bool for indicating if it has been discovered you don't need to free nodes in a maze, just use free\-\_\-maze however, be sure to free nodes allocated not in mazes \end{DoxyCompactList}\item 
 struct {\bf \-\_\-\-M\-A\-Z\-E}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em the maze is graph of nodes, stored internally as an matrix. don't forget to call free\-\_\-maze(maze) after a maze is done being used \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define {\bf M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E}~(16)
-\item 
+\begin{DoxyCompactList}\small\item\em Contains functions for creating and using the Maze and Node structs. \end{DoxyCompactList}\item 
 \#define {\bf P\-A\-T\-H\-\_\-\-S\-I\-Z\-E}~(100)
 \end{DoxyCompactItemize}
 \subsection*{Typedefs}
@@ -39,13 +39,13 @@ enum {\bf \-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N} \{ {\bf N},
 \begin{DoxyCompactItemize}
 \item 
 {\bf Maze} $\ast$ {\bf create\-\_\-maze} ()
-\item 
+\begin{DoxyCompactList}\small\item\em allocates and initializes a node allocates a maze of the given size and sets all links in graph to be null. Naturally, it's column major. \end{DoxyCompactList}\item 
 {\bf Node} $\ast$ {\bf create\-\_\-node} ()
-\item 
+\begin{DoxyCompactList}\small\item\em allocates and intializes a node allocates a node setting all nighbors to null. Function does N\-O\-T allocate for neighbors. \end{DoxyCompactList}\item 
 {\bf Node} $\ast$ {\bf get\-\_\-node} ({\bf Maze} $\ast$maze, int x, int y)
-\item 
+\begin{DoxyCompactList}\small\item\em get node by its position this is equlvelant to maze-\/$>$nodes[x][y] \end{DoxyCompactList}\item 
 bool {\bf visited} (int row, int col, {\bf Direction} dir, {\bf Maze} $\ast$maze)
-\item 
+\begin{DoxyCompactList}\small\item\em check if a node in a direction is visited looks up (row,col) in maze and checks its neighbors[dir] and returns if that neighbor is known \end{DoxyCompactList}\item 
 bool {\bf free\-\_\-maze} ({\bf Maze} $\ast$maze)
 \item 
 bool {\bf free\-\_\-node} ({\bf Node} $\ast$node)
@@ -58,14 +58,18 @@ bool {\bf free\-\_\-node} ({\bf Node} $\ast$node)
 \subsubsection[{M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E~(16)}\label{maze_8h_a435c893b3d82298d514a7c5f1e433bff}
 
 
-Referenced by create\-\_\-maze(), flood\-\_\-explore(), get\-\_\-node(), is\-Center(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-pointer\-\_\-maze(), print\-\_\-weight\-\_\-maze(), and read\-\_\-from\-\_\-file().
+Contains functions for creating and using the Maze and Node structs. 
+
+\doxyref{maze.\-h}{p.}{maze_8h} 
+
+Referenced by create\-\_\-maze(), flood\-\_\-explore(), flood\-\_\-fill\-\_\-custom(), forward(), free\-\_\-maze(), get\-\_\-node(), is\-Center(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-neighbor\-\_\-maze(), print\-\_\-pointer\-\_\-maze(), print\-\_\-weight\-\_\-maze(), and read\-\_\-from\-\_\-file().
 
 \index{maze.\-h@{maze.\-h}!P\-A\-T\-H\-\_\-\-S\-I\-Z\-E@{P\-A\-T\-H\-\_\-\-S\-I\-Z\-E}}
 \index{P\-A\-T\-H\-\_\-\-S\-I\-Z\-E@{P\-A\-T\-H\-\_\-\-S\-I\-Z\-E}!maze.h@{maze.\-h}}
 \subsubsection[{P\-A\-T\-H\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-A\-T\-H\-\_\-\-S\-I\-Z\-E~(100)}\label{maze_8h_ae78bf7e06bbba1c42b740fef55cf20f8}
 
 
-Referenced by create\-\_\-maze(), and flood\-\_\-explore().
+Referenced by create\-\_\-maze(), flood\-\_\-explore(), and flood\-\_\-fill\-\_\-custom().
 
 
 
@@ -108,11 +112,10 @@ W\label{maze_8h_a11a64da2564648c9fe9a9606714aad81ab722ceeb601c72cd78fbd35f3581fd
 {}
 \end{DoxyParamCaption}
 )}\label{maze_8h_a2546eb73f3c2c31198e29ede13a23397}
-allocates a maze of the given size and sets all links in graph to be null. Naturally, it's column major. 
-\begin{DoxyParams}{Parameters}
-{\em size} & the size of the maze\\
-\hline
-\end{DoxyParams}
+
+
+allocates and initializes a node allocates a maze of the given size and sets all links in graph to be null. Naturally, it's column major. 
+
 \doxyref{maze.\-c}{p.}{maze_8c} implements the functions used to create, free, and manipulate maze \begin{DoxyAuthor}{Author}
 Peter Mitrano 
 \end{DoxyAuthor}
@@ -131,7 +134,11 @@ Referenced by flood\-\_\-explore(), and read\-\_\-from\-\_\-file().
 {}
 \end{DoxyParamCaption}
 )}\label{maze_8h_ab59097ab48a1e883285ed6d3f851e867}
-allocates a node setting all nighbors to null. Function does N\-O\-T allocate for neighbors. 
+
+
+allocates and intializes a node allocates a node setting all nighbors to null. Function does N\-O\-T allocate for neighbors. 
+
+
 
 References E, \-\_\-\-N\-O\-D\-E\-::known, N, \-\_\-\-N\-O\-D\-E\-::neighbors, S, W, and \-\_\-\-N\-O\-D\-E\-::weight.
 
@@ -153,7 +160,11 @@ free's the maze and all nodes
 \end{DoxyParams}
 
 
-References \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, and \-\_\-\-M\-A\-Z\-E\-::nodes.
+References \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, and \-\_\-\-M\-A\-Z\-E\-::nodes.
+
+
+
+Referenced by flood\-\_\-explore(), and main().
 
 \index{maze.\-h@{maze.\-h}!free\-\_\-node@{free\-\_\-node}}
 \index{free\-\_\-node@{free\-\_\-node}!maze.h@{maze.\-h}}
@@ -176,13 +187,17 @@ free's a node
 \item[{int}]{y}
 \end{DoxyParamCaption}
 )}\label{maze_8h_ac38aff6bc69f390a53255c8d9dff9f2c}
-get node by its position 
+
+
+get node by its position this is equlvelant to maze-\/$>$nodes[x][y] 
+
+
 
 References M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, and \-\_\-\-M\-A\-Z\-E\-::nodes.
 
 
 
-Referenced by flood\-\_\-explore(), flood\-\_\-fill(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-pointer\-\_\-maze(), print\-\_\-weight\-\_\-maze(), read\-\_\-from\-\_\-file(), and sense().
+Referenced by flood\-\_\-explore(), flood\-\_\-fill\-\_\-custom(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-pointer\-\_\-maze(), read\-\_\-from\-\_\-file(), and sense().
 
 \index{maze.\-h@{maze.\-h}!visited@{visited}}
 \index{visited@{visited}!maze.h@{maze.\-h}}
@@ -194,7 +209,11 @@ Referenced by flood\-\_\-explore(), flood\-\_\-fill(), print\-\_\-dist\-\_\-maze
 \item[{{\bf Maze} $\ast$}]{maze}
 \end{DoxyParamCaption}
 )}\label{maze_8h_aaacad4fe859a1f00d1f928a38eba0ad3}
-check if a node in a direciton is visited 
+
+
+check if a node in a direction is visited looks up (row,col) in maze and checks its neighbors[dir] and returns if that neighbor is known 
+
+
 
 References \-\_\-\-N\-O\-D\-E\-::known, \-\_\-\-N\-O\-D\-E\-::neighbors, and \-\_\-\-M\-A\-Z\-E\-::nodes.
 

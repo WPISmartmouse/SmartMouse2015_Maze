@@ -59,6 +59,8 @@ Functions</h2></td></tr>
 <tr class="separator:a781c6b98a86498bcb6e88e986edd6c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ab1db60fd8a452f6809fc71215ef9e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze__io_8c.html#a3ab1db60fd8a452f6809fc71215ef9e5">print_maze</a> (<a class="el" href="maze_8h.html#a2a99e7d9e300febd16ba6b643e88149e">Maze</a> *maze)</td></tr>
 <tr class="separator:a3ab1db60fd8a452f6809fc71215ef9e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55b803c7e84183fab3254c12bc614606"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze__io_8c.html#a55b803c7e84183fab3254c12bc614606">print_neighbor_maze</a> (<a class="el" href="maze_8h.html#a2a99e7d9e300febd16ba6b643e88149e">Maze</a> *maze)</td></tr>
+<tr class="separator:a55b803c7e84183fab3254c12bc614606"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2fb98cae96e3f79c137cbc8fbc59d4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze__io_8c.html#ad2fb98cae96e3f79c137cbc8fbc59d4f">print_weight_maze</a> (<a class="el" href="maze_8h.html#a2a99e7d9e300febd16ba6b643e88149e">Maze</a> *maze)</td></tr>
 <tr class="separator:ad2fb98cae96e3f79c137cbc8fbc59d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49b58f3ed2c6a70b8429b5a0bf38fd0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="maze__io_8c.html#a49b58f3ed2c6a70b8429b5a0bf38fd0f">print_dist_maze</a> (<a class="el" href="maze_8h.html#a2a99e7d9e300febd16ba6b643e88149e">Maze</a> *maze)</td></tr>
@@ -109,7 +111,26 @@ Functions</h2></td></tr>
 
 <p>References <a class="el" href="maze_8c.html#a73b0c2e5a51ff8f88baf74c406095ef5">get_node()</a>, <a class="el" href="maze_8h.html#a435c893b3d82298d514a7c5f1e433bff">MAZE_SIZE</a>, <a class="el" href="maze_8h.html#a11a64da2564648c9fe9a9606714aad81af1ce01387d2348f8b858721a7db81670">S</a>, and <a class="el" href="maze_8h.html#a11a64da2564648c9fe9a9606714aad81ab722ceeb601c72cd78fbd35f3581fdf7">W</a>.</p>
 
-<p>Referenced by <a class="el" href="read__and__print_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main()</a>.</p>
+<p>Referenced by <a class="el" href="solvers_8h.html#a39a0eee37eb0bf26269344711aa51df2">flood_fill_custom()</a>, and <a class="el" href="read__and__print_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a55b803c7e84183fab3254c12bc614606"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_neighbor_maze </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2a99e7d9e300febd16ba6b643e88149e">Maze</a> *&#160;</td>
+          <td class="paramname"><em>maze</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>prints each node as a list of booleans EX) 0010 would mean on wall South 1011 would mean walls to the North, South, and West </p>
+
+<p>References <a class="el" href="maze_8h.html#a435c893b3d82298d514a7c5f1e433bff">MAZE_SIZE</a>, <a class="el" href="struct__NODE.html#ab474f61f2dea616a934f16db645e83b0">_NODE::neighbors</a>, and <a class="el" href="struct__MAZE.html#a3c6979d722b6efaed52dd25f0f39ecd4">_MAZE::nodes</a>.</p>
 
 </div>
 </div>
@@ -147,9 +168,9 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>duh </p>
 
-<p>References <a class="el" href="maze_8c.html#a73b0c2e5a51ff8f88baf74c406095ef5">get_node()</a>, <a class="el" href="maze_8h.html#a435c893b3d82298d514a7c5f1e433bff">MAZE_SIZE</a>, and <a class="el" href="struct__NODE.html#af4551dec0caa61f0b95a8cd025a73afa">_NODE::weight</a>.</p>
+<p>References <a class="el" href="maze_8h.html#a435c893b3d82298d514a7c5f1e433bff">MAZE_SIZE</a>, <a class="el" href="struct__MAZE.html#a3c6979d722b6efaed52dd25f0f39ecd4">_MAZE::nodes</a>, and <a class="el" href="struct__NODE.html#af4551dec0caa61f0b95a8cd025a73afa">_NODE::weight</a>.</p>
 
-<p>Referenced by <a class="el" href="solvers_8h.html#a9d77a93550779e2bee89f436522e50b4">flood_fill()</a>.</p>
+<p>Referenced by <a class="el" href="solvers_8h.html#a39a0eee37eb0bf26269344711aa51df2">flood_fill_custom()</a>.</p>
 
 </div>
 </div>
@@ -178,7 +199,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 27 2015 23:05:54 for WPI_Smart_Mouse_V3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 28 2015 18:09:28 for WPI_Smart_Mouse_V3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -2,6 +2,11 @@
 \label{struct__MOUSE}\index{\-\_\-\-M\-O\-U\-S\-E@{\-\_\-\-M\-O\-U\-S\-E}}
 
 
+depresents a mouse don't ever change the row/col of a mouse directly. This prevents it from working on the real robot use forward and turn\-\_\-to\-\_\-face to move the mouse around. Once those functions work on the real robot it will port over fluidly  
+
+
+
+
 {\ttfamily \#include $<$mouse.\-h$>$}
 
 \subsection*{Public Attributes}
@@ -14,6 +19,9 @@ int {\bf col}
 {\bf Direction} {\bf dir}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+depresents a mouse don't ever change the row/col of a mouse directly. This prevents it from working on the real robot use forward and turn\-\_\-to\-\_\-face to move the mouse around. Once those functions work on the real robot it will port over fluidly 
 
 \subsection{Member Data Documentation}
 \index{\-\_\-\-M\-O\-U\-S\-E@{\-\_\-\-M\-O\-U\-S\-E}!col@{col}}
@@ -28,7 +36,7 @@ Referenced by at\-Center(), blocked(), blocked\-\_\-in\-\_\-dir(), create\-\_\-m
 \subsubsection[{dir}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Direction} \-\_\-\-M\-O\-U\-S\-E\-::dir}\label{struct__MOUSE_a53f0244726c310c83c8fc413757252ff}
 
 
-Referenced by blocked(), blocked\-\_\-in\-\_\-dir(), create\-\_\-mouse(), forward(), and left\-\_\-hand\-\_\-follow().
+Referenced by blocked(), blocked\-\_\-in\-\_\-dir(), create\-\_\-mouse(), forward(), left\-\_\-hand\-\_\-follow(), and turn\-\_\-to\-\_\-face().
 
 \index{\-\_\-\-M\-O\-U\-S\-E@{\-\_\-\-M\-O\-U\-S\-E}!row@{row}}
 \index{row@{row}!_MOUSE@{\-\_\-\-M\-O\-U\-S\-E}}
