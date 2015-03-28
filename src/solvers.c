@@ -25,9 +25,9 @@ void flood_explore(Maze *kmaze){
 
 
 	char *no_wall_path;
-	no_wall_path = strndup("SSSSSSSSEEEEEEEE",PATH_SIZE);
+	no_wall_path = calloc(PATH_SIZE,sizeof(char));
 	char *all_wall_path;
-	all_wall_path = strndup("S",PATH_SIZE);
+	all_wall_path = calloc(PATH_SIZE,sizeof(char));
 
 	//mouse starts at 0,0
 	do {
@@ -47,47 +47,67 @@ void flood_explore(Maze *kmaze){
 			int c = mouse->col;
 			update_pos(i, &r, &c);
 
+			Direction opposite_direction = (i + 2) % 4;
+
 			//if a wall exists in that direction, add a wall to no_wall_maze
 			if (walls[i]){
 				//making the neighbor null represents adding a wall
+				//make sure to update both the node and the node it no longer connects to!
+				if (no_wall_node->neighbors[i] != NULL){
+					no_wall_node->neighbors[i]->neighbors[opposite_direction] = NULL;
+				}
 				no_wall_node->neighbors[i] = NULL;
 			}
 			//if no wall exists in that direction remove a wall from all_wall_maze
 			else {
 				//getting the previously unconnected neighbor represents adding a wall
+				//make sure to update both the node and the node it now connects to
 				all_wall_node->neighbors[i] = get_node(all_wall_maze, r,c);
+				if (get_node(all_wall_maze,r,c) != NULL){
+					get_node(all_wall_maze, r,c)->neighbors[opposite_direction] = all_wall_node;
+				}
 			}
 		}
 
 		//solve flood fill on the two mazes
-#ifdef DEBUG		
-		printf("NO WALL MAZE\n");
-#endif		
-		flood_fill(no_wall_maze,no_wall_path);
-#ifdef DEBUG		
-		printf("ALL WALL MAZE\n");
-#endif
-		flood_fill(all_wall_maze,all_wall_path);
+		flood_fill_custom(no_wall_maze,no_wall_path,mouse->row,mouse->col);
+		
+		flood_fill_custom(all_wall_maze,all_wall_path,mouse->row,mouse->col);
 
 		printf("no wall path  = %s\n",no_wall_path);
 		printf("all wall path = %s\n",all_wall_path);
 
 
 		//execute the first instruction of the path!
-		execute_command(mouse,*all_wall_path);
+		execute_command(mouse,*no_wall_path);
 		printf("mouse position (%i:%i)\n",mouse->row,mouse->col);
 	}
 	while (no_wall_path != all_wall_path);
 
+
+	free(all_wall_path);
+	free(no_wall_path);
+}
+
+void flood_fill(Maze *maze, char *path){
+	flood_fill_custom(maze,path,0,0);
 }
 
 //This method will take a maze and perform a traditional flood fill
-//the fill starts from 0,0
-void flood_fill(Maze *maze, char *path){
-
-	Node *n = get_node(maze,0,0);
-	Node *root = get_node(maze,0,0);
+//the fill starts from r0,c0
+void flood_fill_custom(Maze *maze, char *path, int r0, int c0){
+	Node *n = get_node(maze,r0,c0);
+	Node *root = get_node(maze,r0,c0);
 	Node *center = get_node(maze,7,7);
+
+	//incase the maze has already been solved, reset all weight and known values
+	int i,j;
+	for (i=0;i<MAZE_SIZE;i++){
+		for (j=0;j<MAZE_SIZE;j++){
+			maze->nodes[i][j]->weight = -1;
+			maze->nodes[i][j]->known = false;
+		}
+	}
 
 	//explore all neighbors of the current node starting  with a weight of 1
 	//return 1 means path to center was found
@@ -95,18 +115,20 @@ void flood_fill(Maze *maze, char *path){
 	explore_neighbors(n, center, 0, &success);
 
 #ifdef DEBUG
-	print_weight_maze(maze);
-	print_maze(maze);
+//	print_weight_maze(maze);
+//	print_maze(maze);
 #endif
 
 	if (!success){
 		return;
 	}
 	
+	//start at the center 
 	n = center;
 
 	//if we solved the maze, traverse from goal back to root and record what direction is shortest
 	char *r_path = malloc(PATH_SIZE*sizeof(char));
+	char *r_p = r_path;
 	while (n != root){
 		Node *min_node = n;
 		Direction min_dir = N;
@@ -124,22 +146,23 @@ void flood_fill(Maze *maze, char *path){
 
 		n = min_node;
 
-		*(r_path++) = dir_to_char(min_dir);
-		*(r_path++) = ' ';
+		*(r_p++) = dir_to_char(min_dir);
 	}
-	*r_path = '\0';
-
+	*r_p = '\0';
+	r_p = r_path;
+	
 	//the create path is from goal to start, so now we "reverse" it
-	while ((*r_path) != '\0'){
+	char* p = path;
+	while ((*r_p) != '\0'){
 		char c;
-		switch(*r_path){
+		switch(*r_p){
 			case 'N':c='S';break;
 			case 'E':c='W';break;
 			case 'S':c='N';break;
 			case 'W':c='E';break;
 		}
-		*(path++) = c;
-		r_path++;
+		*(p++) = c;
+		r_p++;
 	}
 }
 

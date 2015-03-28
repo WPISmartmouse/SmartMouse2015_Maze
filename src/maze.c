@@ -19,7 +19,7 @@ Maze *create_maze(){
 Node *create_node(){
 	Node *node = malloc(sizeof(Node));
 	node->known = false;
-	node->weight = -2;
+	node->weight = -1;
 	node->neighbors[N]=NULL;
 	node->neighbors[S]=NULL;
 	node->neighbors[E]=NULL;

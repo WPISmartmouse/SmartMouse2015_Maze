@@ -31,6 +31,9 @@ void flood_explore(Maze *kmaze);
 */
 void flood_fill(Maze *maze, char *path);
 
+/** this one also allows you to specify a starting position other tha 0,0 **/
+void flood_fill_custom(Maze *maze, char *path, int r0, int c0);
+
 /**this assigns n->weight+1 to each neighbor, and recursively calls it on all valid neighbors
 * @param node the node to explore the neighbors of
 * @param goal the node you want to find a path to

@@ -23,7 +23,7 @@ void forward(Mouse *mouse){
 
 void turn_to_face(Mouse *mouse,Direction d){
 	if (mouse->dir != d){
-		printf("turning to face %c",dir_to_char(d));
+		printf("turning to face %c\n",dir_to_char(d));
 		mouse->dir = d;
 	}
 	//in reality this will turn the physical mouse

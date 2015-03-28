@@ -60,9 +60,9 @@ void print_maze(Maze *maze){
 		char *str = calloc(sizeof(char),MAZE_SIZE + 2);
 		char *s=str;
 		for (j=0;j<MAZE_SIZE;j++){
-			if (!get_node(maze,i,j)->neighbors[W]){
+			if (get_node(maze,i,j)->neighbors[W] == NULL){
 				strcpy(s++,"|");
-				if (!get_node(maze,i,j)->neighbors[S]){
+				if (get_node(maze,i,j)->neighbors[S] == NULL){
 					strcpy(s++,"_");
 				}
 				else {
@@ -71,7 +71,7 @@ void print_maze(Maze *maze){
 			}
 			else {
 				strcpy(s++,"_");
-				if (!get_node(maze,i,j)->neighbors[S]){
+				if (get_node(maze,i,j)->neighbors[S] == NULL){
 					strcpy(s++,"_");
 				}
 				else {
