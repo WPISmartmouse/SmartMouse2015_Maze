@@ -2,6 +2,11 @@
 \label{struct__NODE}\index{\-\_\-\-N\-O\-D\-E@{\-\_\-\-N\-O\-D\-E}}
 
 
+holds its location \& neighbors, as well as a bool for indicating if it has been discovered you don't need to free nodes in a maze, just use free\-\_\-maze however, be sure to free nodes allocated not in mazes  
+
+
+
+
 {\ttfamily \#include $<$maze.\-h$>$}
 
 \subsection*{Public Attributes}
@@ -18,7 +23,7 @@ struct {\bf \-\_\-\-N\-O\-D\-E} $\ast$ {\bf neighbors} [4]
 
 
 \subsection{Detailed Description}
-holds its location \& neighbors, as well as a bool for indicating if it has been discovered 
+holds its location \& neighbors, as well as a bool for indicating if it has been discovered you don't need to free nodes in a maze, just use free\-\_\-maze however, be sure to free nodes allocated not in mazes 
 
 \subsection{Member Data Documentation}
 \index{\-\_\-\-N\-O\-D\-E@{\-\_\-\-N\-O\-D\-E}!distance@{distance}}
@@ -33,21 +38,21 @@ Referenced by print\-\_\-dist\-\_\-maze().
 \subsubsection[{known}]{\setlength{\rightskip}{0pt plus 5cm}bool \-\_\-\-N\-O\-D\-E\-::known}\label{struct__NODE_a5cca231699bb41ced84dcd000bb6c117}
 
 
-Referenced by create\-\_\-node(), explore\-\_\-neighbors(), left\-\_\-hand\-\_\-follow(), mark\-\_\-position(), and visited().
+Referenced by create\-\_\-node(), explore\-\_\-neighbors(), flood\-\_\-fill\-\_\-custom(), left\-\_\-hand\-\_\-follow(), mark\-\_\-position(), and visited().
 
 \index{\-\_\-\-N\-O\-D\-E@{\-\_\-\-N\-O\-D\-E}!neighbors@{neighbors}}
 \index{neighbors@{neighbors}!_NODE@{\-\_\-\-N\-O\-D\-E}}
 \subsubsection[{neighbors}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf \-\_\-\-N\-O\-D\-E}$\ast$ \-\_\-\-N\-O\-D\-E\-::neighbors[4]}\label{struct__NODE_ab474f61f2dea616a934f16db645e83b0}
 
 
-Referenced by blocked\-\_\-in\-\_\-dir(), create\-\_\-node(), explore\-\_\-neighbors(), flood\-\_\-explore(), flood\-\_\-fill(), read\-\_\-from\-\_\-file(), sense(), and visited().
+Referenced by blocked\-\_\-in\-\_\-dir(), create\-\_\-node(), explore\-\_\-neighbors(), flood\-\_\-explore(), flood\-\_\-fill\-\_\-custom(), print\-\_\-neighbor\-\_\-maze(), read\-\_\-from\-\_\-file(), sense(), and visited().
 
 \index{\-\_\-\-N\-O\-D\-E@{\-\_\-\-N\-O\-D\-E}!weight@{weight}}
 \index{weight@{weight}!_NODE@{\-\_\-\-N\-O\-D\-E}}
 \subsubsection[{weight}]{\setlength{\rightskip}{0pt plus 5cm}int \-\_\-\-N\-O\-D\-E\-::weight}\label{struct__NODE_af4551dec0caa61f0b95a8cd025a73afa}
 
 
-Referenced by explore\-\_\-neighbors(), flood\-\_\-fill(), and print\-\_\-weight\-\_\-maze().
+Referenced by create\-\_\-node(), explore\-\_\-neighbors(), flood\-\_\-fill\-\_\-custom(), and print\-\_\-weight\-\_\-maze().
 
 
 

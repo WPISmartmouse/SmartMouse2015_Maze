@@ -63,8 +63,10 @@ Macros</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a4f06bae1b5a4e1ab9f8dea6fba582b61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solvers_8c.html#a4f06bae1b5a4e1ab9f8dea6fba582b61">flood_explore</a> (<a class="el" href="maze_8h.html#a2a99e7d9e300febd16ba6b643e88149e">Maze</a> *kmaze)</td></tr>
 <tr class="separator:a4f06bae1b5a4e1ab9f8dea6fba582b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a13c8340e1d0386605b4757fc260bba"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solvers_8c.html#a1a13c8340e1d0386605b4757fc260bba">flood_fill</a> (<a class="el" href="maze_8h.html#a2a99e7d9e300febd16ba6b643e88149e">Maze</a> *maze)</td></tr>
-<tr class="separator:a1a13c8340e1d0386605b4757fc260bba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d77a93550779e2bee89f436522e50b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solvers_8c.html#a9d77a93550779e2bee89f436522e50b4">flood_fill</a> (<a class="el" href="maze_8h.html#a2a99e7d9e300febd16ba6b643e88149e">Maze</a> *maze, char *path)</td></tr>
+<tr class="separator:a9d77a93550779e2bee89f436522e50b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39a0eee37eb0bf26269344711aa51df2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solvers_8c.html#a39a0eee37eb0bf26269344711aa51df2">flood_fill_custom</a> (<a class="el" href="maze_8h.html#a2a99e7d9e300febd16ba6b643e88149e">Maze</a> *maze, char *path, int r0, int c0)</td></tr>
+<tr class="separator:a39a0eee37eb0bf26269344711aa51df2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a287d256a52d61e3e265d78823d8bbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solvers_8c.html#a2a287d256a52d61e3e265d78823d8bbd">explore_neighbors</a> (<a class="el" href="maze_8h.html#af7c7b49cfe1ca6966a61e108025c680c">Node</a> *node, <a class="el" href="maze_8h.html#af7c7b49cfe1ca6966a61e108025c680c">Node</a> *goal, int weight, bool *success)</td></tr>
 <tr class="separator:a2a287d256a52d61e3e265d78823d8bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72821f7dc28427499d6b1e2f8f4110c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="solvers_8c.html#a72821f7dc28427499d6b1e2f8f4110c5">left_hand_follow</a> (<a class="el" href="maze_8h.html#a2a99e7d9e300febd16ba6b643e88149e">Maze</a> *maze)</td></tr>
@@ -271,7 +273,7 @@ Functions</h2></td></tr>
 
 <p>References <a class="el" href="solvers_8c.html#a2a287d256a52d61e3e265d78823d8bbd">explore_neighbors()</a>, <a class="el" href="struct__NODE.html#a5cca231699bb41ced84dcd000bb6c117">_NODE::known</a>, <a class="el" href="struct__NODE.html#ab474f61f2dea616a934f16db645e83b0">_NODE::neighbors</a>, and <a class="el" href="struct__NODE.html#af4551dec0caa61f0b95a8cd025a73afa">_NODE::weight</a>.</p>
 
-<p>Referenced by <a class="el" href="solvers_8h.html#a2a287d256a52d61e3e265d78823d8bbd">explore_neighbors()</a>, and <a class="el" href="solvers_8h.html#a1a13c8340e1d0386605b4757fc260bba">flood_fill()</a>.</p>
+<p>Referenced by <a class="el" href="solvers_8h.html#a2a287d256a52d61e3e265d78823d8bbd">explore_neighbors()</a>, and <a class="el" href="solvers_8h.html#a39a0eee37eb0bf26269344711aa51df2">flood_fill_custom()</a>.</p>
 
 </div>
 </div>
@@ -288,23 +290,34 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>use args to the make command to print more information ARGS=-DDEBUG prints just the mouse position ARGS=-DDEBUG_FULL prints mazes, paths, and mouse positions ARGS=-DDEBUG_PATH prints just paths</p>
 
-<p>References <a class="el" href="struct__MOUSE.html#af473aaf6728c4d711e558d81af672725">_MOUSE::col</a>, <a class="el" href="maze_8c.html#a2546eb73f3c2c31198e29ede13a23397">create_maze()</a>, <a class="el" href="mouse_8c.html#a746cb478532b016b28ad06f8e03b22bc">create_mouse()</a>, <a class="el" href="maze_8h.html#a11a64da2564648c9fe9a9606714aad81ab199e021998d49b1f09338d8b9b18ecb">E</a>, <a class="el" href="solvers_8c.html#a1a13c8340e1d0386605b4757fc260bba">flood_fill()</a>, <a class="el" href="maze_8c.html#a73b0c2e5a51ff8f88baf74c406095ef5">get_node()</a>, <a class="el" href="maze_8h.html#a435c893b3d82298d514a7c5f1e433bff">MAZE_SIZE</a>, <a class="el" href="maze_8h.html#a11a64da2564648c9fe9a9606714aad81a2c63acbe79d9f41ba6bb7766e9c37702">N</a>, <a class="el" href="struct__NODE.html#ab474f61f2dea616a934f16db645e83b0">_NODE::neighbors</a>, <a class="el" href="maze__io_8c.html#a0363b78dcedb44a0921ab2928b692e46">print_pointer_maze()</a>, <a class="el" href="struct__MOUSE.html#aae94539440c5448fbda17b54fd6119ac">_MOUSE::row</a>, <a class="el" href="maze_8h.html#a11a64da2564648c9fe9a9606714aad81af1ce01387d2348f8b858721a7db81670">S</a>, <a class="el" href="mouse_8c.html#ab3e3d1a3332a082c83f9e9e5aac30aae">sense()</a>, <a class="el" href="mouse_8c.html#a3a5aea5e15cefc3afa3c71706929cf84">update_pos()</a>, and <a class="el" href="maze_8h.html#a11a64da2564648c9fe9a9606714aad81ab722ceeb601c72cd78fbd35f3581fdf7">W</a>.</p>
+<p>References <a class="el" href="struct__MOUSE.html#af473aaf6728c4d711e558d81af672725">_MOUSE::col</a>, <a class="el" href="maze_8c.html#a2546eb73f3c2c31198e29ede13a23397">create_maze()</a>, <a class="el" href="mouse_8c.html#a746cb478532b016b28ad06f8e03b22bc">create_mouse()</a>, <a class="el" href="maze_8h.html#a11a64da2564648c9fe9a9606714aad81ab199e021998d49b1f09338d8b9b18ecb">E</a>, <a class="el" href="mouse_8c.html#a57b1793074a1e469bb0d86505e2b2841">execute_command()</a>, <a class="el" href="struct__MAZE.html#a7b9247d555d606e8588851f62f6c7de8">_MAZE::fastest_route</a>, <a class="el" href="solvers_8c.html#a9d77a93550779e2bee89f436522e50b4">flood_fill()</a>, <a class="el" href="solvers_8c.html#a39a0eee37eb0bf26269344711aa51df2">flood_fill_custom()</a>, <a class="el" href="maze_8c.html#a3571b14873ee008644b52337ff2956d4">free_maze()</a>, <a class="el" href="maze_8c.html#a73b0c2e5a51ff8f88baf74c406095ef5">get_node()</a>, <a class="el" href="maze_8h.html#a435c893b3d82298d514a7c5f1e433bff">MAZE_SIZE</a>, <a class="el" href="maze_8h.html#a11a64da2564648c9fe9a9606714aad81a2c63acbe79d9f41ba6bb7766e9c37702">N</a>, <a class="el" href="struct__NODE.html#ab474f61f2dea616a934f16db645e83b0">_NODE::neighbors</a>, <a class="el" href="maze_8h.html#ae78bf7e06bbba1c42b740fef55cf20f8">PATH_SIZE</a>, <a class="el" href="struct__MOUSE.html#aae94539440c5448fbda17b54fd6119ac">_MOUSE::row</a>, <a class="el" href="maze_8h.html#a11a64da2564648c9fe9a9606714aad81af1ce01387d2348f8b858721a7db81670">S</a>, <a class="el" href="mouse_8c.html#ab3e3d1a3332a082c83f9e9e5aac30aae">sense()</a>, <a class="el" href="mouse_8c.html#a3a5aea5e15cefc3afa3c71706929cf84">update_pos()</a>, and <a class="el" href="maze_8h.html#a11a64da2564648c9fe9a9606714aad81ab722ceeb601c72cd78fbd35f3581fdf7">W</a>.</p>
 
 <p>Referenced by <a class="el" href="explore_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a1a13c8340e1d0386605b4757fc260bba"></a>
+<a class="anchor" id="a9d77a93550779e2bee89f436522e50b4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char* flood_fill </td>
+          <td class="memname">void flood_fill </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="maze_8h.html#a2a99e7d9e300febd16ba6b643e88149e">Maze</a> *&#160;</td>
-          <td class="paramname"><em>maze</em></td><td>)</td>
+          <td class="paramname"><em>maze</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -316,9 +329,52 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>References <a class="el" href="mouse_8c.html#ab02210c2feef5e25235fc2f76fb50ce1">dir_to_char()</a>, <a class="el" href="solvers_8c.html#a2a287d256a52d61e3e265d78823d8bbd">explore_neighbors()</a>, <a class="el" href="struct__MAZE.html#a7b9247d555d606e8588851f62f6c7de8">_MAZE::fastest_route</a>, <a class="el" href="maze_8c.html#a73b0c2e5a51ff8f88baf74c406095ef5">get_node()</a>, <a class="el" href="maze_8h.html#a435c893b3d82298d514a7c5f1e433bff">MAZE_SIZE</a>, <a class="el" href="maze_8h.html#a11a64da2564648c9fe9a9606714aad81a2c63acbe79d9f41ba6bb7766e9c37702">N</a>, <a class="el" href="struct__NODE.html#ab474f61f2dea616a934f16db645e83b0">_NODE::neighbors</a>, <a class="el" href="maze__io_8c.html#ad2fb98cae96e3f79c137cbc8fbc59d4f">print_weight_maze()</a>, and <a class="el" href="struct__NODE.html#af4551dec0caa61f0b95a8cd025a73afa">_NODE::weight</a>.</p>
+<p>References <a class="el" href="solvers_8c.html#a39a0eee37eb0bf26269344711aa51df2">flood_fill_custom()</a>.</p>
 
 <p>Referenced by <a class="el" href="solvers_8h.html#a4f06bae1b5a4e1ab9f8dea6fba582b61">flood_explore()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a39a0eee37eb0bf26269344711aa51df2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void flood_fill_custom </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="maze_8h.html#a2a99e7d9e300febd16ba6b643e88149e">Maze</a> *&#160;</td>
+          <td class="paramname"><em>maze</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>r0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>c0</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>this one also allows you to specify a starting position other tha 0,0 </p>
+
+<p>References <a class="el" href="mouse_8c.html#ab02210c2feef5e25235fc2f76fb50ce1">dir_to_char()</a>, <a class="el" href="solvers_8c.html#a2a287d256a52d61e3e265d78823d8bbd">explore_neighbors()</a>, <a class="el" href="maze_8c.html#a73b0c2e5a51ff8f88baf74c406095ef5">get_node()</a>, <a class="el" href="struct__NODE.html#a5cca231699bb41ced84dcd000bb6c117">_NODE::known</a>, <a class="el" href="maze_8h.html#a435c893b3d82298d514a7c5f1e433bff">MAZE_SIZE</a>, <a class="el" href="maze_8h.html#a11a64da2564648c9fe9a9606714aad81a2c63acbe79d9f41ba6bb7766e9c37702">N</a>, <a class="el" href="struct__NODE.html#ab474f61f2dea616a934f16db645e83b0">_NODE::neighbors</a>, <a class="el" href="struct__MAZE.html#a3c6979d722b6efaed52dd25f0f39ecd4">_MAZE::nodes</a>, <a class="el" href="maze_8h.html#ae78bf7e06bbba1c42b740fef55cf20f8">PATH_SIZE</a>, <a class="el" href="maze__io_8c.html#a3ab1db60fd8a452f6809fc71215ef9e5">print_maze()</a>, <a class="el" href="maze__io_8c.html#ad2fb98cae96e3f79c137cbc8fbc59d4f">print_weight_maze()</a>, and <a class="el" href="struct__NODE.html#af4551dec0caa61f0b95a8cd025a73afa">_NODE::weight</a>.</p>
+
+<p>Referenced by <a class="el" href="solvers_8h.html#a4f06bae1b5a4e1ab9f8dea6fba582b61">flood_explore()</a>, and <a class="el" href="solvers_8h.html#a9d77a93550779e2bee89f436522e50b4">flood_fill()</a>.</p>
 
 </div>
 </div>
@@ -425,7 +481,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 22 2015 20:21:39 for WPI_Smart_Mouse_V3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 28 2015 18:09:28 for WPI_Smart_Mouse_V3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

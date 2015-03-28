@@ -2,6 +2,7 @@
 \label{solvers_8h}\index{solvers.\-h@{solvers.\-h}}
 {\ttfamily \#include \char`\"{}maze.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}mouse.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}maze\-\_\-io.\-h\char`\"{}}\\*
 {\ttfamily \#include $<$stdbool.\-h$>$}\\*
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -14,7 +15,9 @@ void {\bf update\-\_\-neighbors} ({\bf Node} $\ast$node)
 \item 
 void {\bf flood\-\_\-explore} ({\bf Maze} $\ast$kmaze)
 \item 
-char $\ast$ {\bf flood\-\_\-fill} ({\bf Maze} $\ast$maze)
+void {\bf flood\-\_\-fill} ({\bf Maze} $\ast$maze, char $\ast$path)
+\item 
+void {\bf flood\-\_\-fill\-\_\-custom} ({\bf Maze} $\ast$maze, char $\ast$path, int r0, int c0)
 \item 
 void {\bf explore\-\_\-neighbors} ({\bf Node} $\ast$node, {\bf Node} $\ast$goal, int weight, bool $\ast$success)
 \item 
@@ -157,7 +160,7 @@ References explore\-\_\-neighbors(), \-\_\-\-N\-O\-D\-E\-::known, \-\_\-\-N\-O\-
 
 
 
-Referenced by explore\-\_\-neighbors(), and flood\-\_\-fill().
+Referenced by explore\-\_\-neighbors(), and flood\-\_\-fill\-\_\-custom().
 
 \index{solvers.\-h@{solvers.\-h}!flood\-\_\-explore@{flood\-\_\-explore}}
 \index{flood\-\_\-explore@{flood\-\_\-explore}!solvers.h@{solvers.\-h}}
@@ -166,9 +169,9 @@ Referenced by explore\-\_\-neighbors(), and flood\-\_\-fill().
 \item[{{\bf Maze} $\ast$}]{kmaze}
 \end{DoxyParamCaption}
 )}\label{solvers_8h_a4f06bae1b5a4e1ab9f8dea6fba582b61}
+use args to the make command to print more information A\-R\-G\-S=-\/\-D\-D\-E\-B\-U\-G prints just the mouse position A\-R\-G\-S=-\/\-D\-D\-E\-B\-U\-G\-\_\-\-F\-U\-L\-L prints mazes, paths, and mouse positions A\-R\-G\-S=-\/\-D\-D\-E\-B\-U\-G\-\_\-\-P\-A\-T\-H prints just paths
 
-
-References \-\_\-\-M\-O\-U\-S\-E\-::col, create\-\_\-maze(), create\-\_\-mouse(), E, flood\-\_\-fill(), get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, N, \-\_\-\-N\-O\-D\-E\-::neighbors, print\-\_\-pointer\-\_\-maze(), \-\_\-\-M\-O\-U\-S\-E\-::row, S, sense(), update\-\_\-pos(), and W.
+References \-\_\-\-M\-O\-U\-S\-E\-::col, create\-\_\-maze(), create\-\_\-mouse(), E, execute\-\_\-command(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, flood\-\_\-fill(), flood\-\_\-fill\-\_\-custom(), free\-\_\-maze(), get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, N, \-\_\-\-N\-O\-D\-E\-::neighbors, P\-A\-T\-H\-\_\-\-S\-I\-Z\-E, \-\_\-\-M\-O\-U\-S\-E\-::row, S, sense(), update\-\_\-pos(), and W.
 
 
 
@@ -176,11 +179,12 @@ Referenced by main().
 
 \index{solvers.\-h@{solvers.\-h}!flood\-\_\-fill@{flood\-\_\-fill}}
 \index{flood\-\_\-fill@{flood\-\_\-fill}!solvers.h@{solvers.\-h}}
-\subsubsection[{flood\-\_\-fill}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ flood\-\_\-fill (
+\subsubsection[{flood\-\_\-fill}]{\setlength{\rightskip}{0pt plus 5cm}void flood\-\_\-fill (
 \begin{DoxyParamCaption}
-\item[{{\bf Maze} $\ast$}]{maze}
+\item[{{\bf Maze} $\ast$}]{maze, }
+\item[{char $\ast$}]{path}
 \end{DoxyParamCaption}
-)}\label{solvers_8h_a1a13c8340e1d0386605b4757fc260bba}
+)}\label{solvers_8h_a9d77a93550779e2bee89f436522e50b4}
 set starting point 0,0 \& S. depth-\/first search of all nodes in the grid, adding 1 each time. once all nodes are discovered, the path is solved by going backwards from the center to the lowest neighbor each time 
 \begin{DoxyParams}{Parameters}
 {\em maze} & maze to solve \\
@@ -188,11 +192,29 @@ set starting point 0,0 \& S. depth-\/first search of all nodes in the grid, addi
 \end{DoxyParams}
 
 
-References dir\-\_\-to\-\_\-char(), explore\-\_\-neighbors(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, N, \-\_\-\-N\-O\-D\-E\-::neighbors, print\-\_\-weight\-\_\-maze(), and \-\_\-\-N\-O\-D\-E\-::weight.
+References flood\-\_\-fill\-\_\-custom().
 
 
 
 Referenced by flood\-\_\-explore().
+
+\index{solvers.\-h@{solvers.\-h}!flood\-\_\-fill\-\_\-custom@{flood\-\_\-fill\-\_\-custom}}
+\index{flood\-\_\-fill\-\_\-custom@{flood\-\_\-fill\-\_\-custom}!solvers.h@{solvers.\-h}}
+\subsubsection[{flood\-\_\-fill\-\_\-custom}]{\setlength{\rightskip}{0pt plus 5cm}void flood\-\_\-fill\-\_\-custom (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze, }
+\item[{char $\ast$}]{path, }
+\item[{int}]{r0, }
+\item[{int}]{c0}
+\end{DoxyParamCaption}
+)}\label{solvers_8h_a39a0eee37eb0bf26269344711aa51df2}
+this one also allows you to specify a starting position other tha 0,0 
+
+References dir\-\_\-to\-\_\-char(), explore\-\_\-neighbors(), get\-\_\-node(), \-\_\-\-N\-O\-D\-E\-::known, M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, N, \-\_\-\-N\-O\-D\-E\-::neighbors, \-\_\-\-M\-A\-Z\-E\-::nodes, P\-A\-T\-H\-\_\-\-S\-I\-Z\-E, print\-\_\-maze(), print\-\_\-weight\-\_\-maze(), and \-\_\-\-N\-O\-D\-E\-::weight.
+
+
+
+Referenced by flood\-\_\-explore(), and flood\-\_\-fill().
 
 \index{solvers.\-h@{solvers.\-h}!is\-Center@{is\-Center}}
 \index{is\-Center@{is\-Center}!solvers.h@{solvers.\-h}}

@@ -8,6 +8,8 @@
 \item 
 void {\bf print\-\_\-maze} ({\bf Maze} $\ast$maze)
 \item 
+void {\bf print\-\_\-neighbor\-\_\-maze} ({\bf Maze} $\ast$maze)
+\item 
 void {\bf print\-\_\-weight\-\_\-maze} ({\bf Maze} $\ast$maze)
 \item 
 void {\bf print\-\_\-dist\-\_\-maze} ({\bf Maze} $\ast$maze)
@@ -46,7 +48,18 @@ References get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, S, and W.
 
 
 
-Referenced by main().
+Referenced by flood\-\_\-fill\-\_\-custom(), and main().
+
+\index{maze\-\_\-io.\-c@{maze\-\_\-io.\-c}!print\-\_\-neighbor\-\_\-maze@{print\-\_\-neighbor\-\_\-maze}}
+\index{print\-\_\-neighbor\-\_\-maze@{print\-\_\-neighbor\-\_\-maze}!maze_io.c@{maze\-\_\-io.\-c}}
+\subsubsection[{print\-\_\-neighbor\-\_\-maze}]{\setlength{\rightskip}{0pt plus 5cm}void print\-\_\-neighbor\-\_\-maze (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze}
+\end{DoxyParamCaption}
+)}\label{maze__io_8c_a55b803c7e84183fab3254c12bc614606}
+prints each node as a list of booleans E\-X) 0010 would mean on wall South 1011 would mean walls to the North, South, and West 
+
+References M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, \-\_\-\-N\-O\-D\-E\-::neighbors, and \-\_\-\-M\-A\-Z\-E\-::nodes.
 
 \index{maze\-\_\-io.\-c@{maze\-\_\-io.\-c}!print\-\_\-pointer\-\_\-maze@{print\-\_\-pointer\-\_\-maze}}
 \index{print\-\_\-pointer\-\_\-maze@{print\-\_\-pointer\-\_\-maze}!maze_io.c@{maze\-\_\-io.\-c}}
@@ -59,10 +72,6 @@ duh
 
 References get\-\_\-node(), and M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E.
 
-
-
-Referenced by flood\-\_\-explore().
-
 \index{maze\-\_\-io.\-c@{maze\-\_\-io.\-c}!print\-\_\-weight\-\_\-maze@{print\-\_\-weight\-\_\-maze}}
 \index{print\-\_\-weight\-\_\-maze@{print\-\_\-weight\-\_\-maze}!maze_io.c@{maze\-\_\-io.\-c}}
 \subsubsection[{print\-\_\-weight\-\_\-maze}]{\setlength{\rightskip}{0pt plus 5cm}void print\-\_\-weight\-\_\-maze (
@@ -72,11 +81,11 @@ Referenced by flood\-\_\-explore().
 )}\label{maze__io_8c_ad2fb98cae96e3f79c137cbc8fbc59d4f}
 duh 
 
-References get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, and \-\_\-\-N\-O\-D\-E\-::weight.
+References M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, \-\_\-\-M\-A\-Z\-E\-::nodes, and \-\_\-\-N\-O\-D\-E\-::weight.
 
 
 
-Referenced by flood\-\_\-fill().
+Referenced by flood\-\_\-fill\-\_\-custom().
 
 \index{maze\-\_\-io.\-c@{maze\-\_\-io.\-c}!read\-\_\-from\-\_\-file@{read\-\_\-from\-\_\-file}}
 \index{read\-\_\-from\-\_\-file@{read\-\_\-from\-\_\-file}!maze_io.c@{maze\-\_\-io.\-c}}
