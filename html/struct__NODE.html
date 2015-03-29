@@ -49,7 +49,7 @@
 </div><!--header-->
 <div class="contents">
 
-<p>holds its location &amp; neighbors, as well as a bool for indicating if it has been discovered you don't need to free nodes in a maze, just use free_maze however, be sure to free nodes allocated not in mazes  
+<p>holds its location &amp; neighbors, as well as a bool for indicating if it has been discovered you don't need to free nodes in a maze, just use free_maze however, be sure to free nodes allocated not in mazes I finally gave in an added row and col attributes the node....be very careful you dont get fuck with those. Don't ever move a node around in maze because you risk getting the actual row/col off from the nodes row/col visited is meant for ACTUALLY visiting, known is just used for searching/solving  
  <a href="struct__NODE.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="maze_8h_source.html">maze.h</a>&gt;</code></p>
@@ -58,6 +58,12 @@
 Public Attributes</h2></td></tr>
 <tr class="memitem:a5cca231699bb41ced84dcd000bb6c117"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__NODE.html#a5cca231699bb41ced84dcd000bb6c117">known</a></td></tr>
 <tr class="separator:a5cca231699bb41ced84dcd000bb6c117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7129c4e2ec0513eb58a8d3581fec5d81"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__NODE.html#a7129c4e2ec0513eb58a8d3581fec5d81">visited</a></td></tr>
+<tr class="separator:a7129c4e2ec0513eb58a8d3581fec5d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42380117246af64ca6d423451e8b5314"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__NODE.html#a42380117246af64ca6d423451e8b5314">row</a></td></tr>
+<tr class="separator:a42380117246af64ca6d423451e8b5314"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb55c48a3be1271f0750fb74eb2eb8f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__NODE.html#afb55c48a3be1271f0750fb74eb2eb8f7">col</a></td></tr>
+<tr class="separator:afb55c48a3be1271f0750fb74eb2eb8f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4551dec0caa61f0b95a8cd025a73afa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__NODE.html#af4551dec0caa61f0b95a8cd025a73afa">weight</a></td></tr>
 <tr class="separator:af4551dec0caa61f0b95a8cd025a73afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6da4411a570a71b33e7ea9afed281c39"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__NODE.html#a6da4411a570a71b33e7ea9afed281c39">distance</a></td></tr>
@@ -66,8 +72,22 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ab474f61f2dea616a934f16db645e83b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>holds its location &amp; neighbors, as well as a bool for indicating if it has been discovered you don't need to free nodes in a maze, just use free_maze however, be sure to free nodes allocated not in mazes </p>
+<div class="textblock"><p>holds its location &amp; neighbors, as well as a bool for indicating if it has been discovered you don't need to free nodes in a maze, just use free_maze however, be sure to free nodes allocated not in mazes I finally gave in an added row and col attributes the node....be very careful you dont get fuck with those. Don't ever move a node around in maze because you risk getting the actual row/col off from the nodes row/col visited is meant for ACTUALLY visiting, known is just used for searching/solving </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="afb55c48a3be1271f0750fb74eb2eb8f7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _NODE::col</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="maze_8h.html#a2546eb73f3c2c31198e29ede13a23397">create_maze()</a>, and <a class="el" href="solvers_8h.html#a4f06bae1b5a4e1ab9f8dea6fba582b61">flood_explore()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a6da4411a570a71b33e7ea9afed281c39"></a>
 <div class="memitem">
 <div class="memproto">
@@ -92,7 +112,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="maze_8h.html#ab59097ab48a1e883285ed6d3f851e867">create_node()</a>, <a class="el" href="solvers_8h.html#a2a287d256a52d61e3e265d78823d8bbd">explore_neighbors()</a>, <a class="el" href="solvers_8h.html#a39a0eee37eb0bf26269344711aa51df2">flood_fill_custom()</a>, <a class="el" href="solvers_8h.html#a72821f7dc28427499d6b1e2f8f4110c5">left_hand_follow()</a>, <a class="el" href="solvers_8h.html#a9d0255746315967b6b83ed1dceffb8c9">mark_position()</a>, and <a class="el" href="maze_8h.html#aaacad4fe859a1f00d1f928a38eba0ad3">visited()</a>.</p>
+<p>Referenced by <a class="el" href="maze_8h.html#ab59097ab48a1e883285ed6d3f851e867">create_node()</a>, <a class="el" href="solvers_8h.html#a2a287d256a52d61e3e265d78823d8bbd">explore_neighbors()</a>, <a class="el" href="solvers_8h.html#aad2c6e0b49ef03b009fa7e1553dcee9f">flood_fill_custom()</a>, <a class="el" href="solvers_8h.html#a72821f7dc28427499d6b1e2f8f4110c5">left_hand_follow()</a>, <a class="el" href="solvers_8h.html#a9d0255746315967b6b83ed1dceffb8c9">mark_position()</a>, and <a class="el" href="maze_8h.html#aaacad4fe859a1f00d1f928a38eba0ad3">visited()</a>.</p>
 
 </div>
 </div>
@@ -106,7 +126,35 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="solvers_8h.html#a575f31d46d6dd53cfe3709dc3df49d4d">blocked_in_dir()</a>, <a class="el" href="maze_8h.html#ab59097ab48a1e883285ed6d3f851e867">create_node()</a>, <a class="el" href="solvers_8h.html#a2a287d256a52d61e3e265d78823d8bbd">explore_neighbors()</a>, <a class="el" href="solvers_8h.html#a4f06bae1b5a4e1ab9f8dea6fba582b61">flood_explore()</a>, <a class="el" href="solvers_8h.html#a39a0eee37eb0bf26269344711aa51df2">flood_fill_custom()</a>, <a class="el" href="maze__io_8h.html#a55b803c7e84183fab3254c12bc614606">print_neighbor_maze()</a>, <a class="el" href="maze__io_8h.html#a781c6b98a86498bcb6e88e986edd6c95">read_from_file()</a>, <a class="el" href="mouse_8h.html#ab3e3d1a3332a082c83f9e9e5aac30aae">sense()</a>, and <a class="el" href="maze_8h.html#aaacad4fe859a1f00d1f928a38eba0ad3">visited()</a>.</p>
+<p>Referenced by <a class="el" href="solvers_8h.html#a575f31d46d6dd53cfe3709dc3df49d4d">blocked_in_dir()</a>, <a class="el" href="maze_8h.html#ab59097ab48a1e883285ed6d3f851e867">create_node()</a>, <a class="el" href="solvers_8h.html#a2a287d256a52d61e3e265d78823d8bbd">explore_neighbors()</a>, <a class="el" href="solvers_8h.html#a4f06bae1b5a4e1ab9f8dea6fba582b61">flood_explore()</a>, <a class="el" href="solvers_8h.html#aad2c6e0b49ef03b009fa7e1553dcee9f">flood_fill_custom()</a>, <a class="el" href="maze_8h.html#a9938cdc7fa295ca6df20a252dc059543">maze_diff()</a>, <a class="el" href="maze__io_8h.html#a55b803c7e84183fab3254c12bc614606">print_neighbor_maze()</a>, <a class="el" href="maze__io_8h.html#a781c6b98a86498bcb6e88e986edd6c95">read_from_file()</a>, <a class="el" href="mouse_8h.html#ab3e3d1a3332a082c83f9e9e5aac30aae">sense()</a>, <a class="el" href="maze_8h.html#aa2aa19c775e7ad9a7e06a0193708768b">update_nodes()</a>, and <a class="el" href="maze_8h.html#aaacad4fe859a1f00d1f928a38eba0ad3">visited()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a42380117246af64ca6d423451e8b5314"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _NODE::row</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="maze_8h.html#a2546eb73f3c2c31198e29ede13a23397">create_maze()</a>, and <a class="el" href="solvers_8h.html#a4f06bae1b5a4e1ab9f8dea6fba582b61">flood_explore()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7129c4e2ec0513eb58a8d3581fec5d81"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool _NODE::visited</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="maze_8h.html#a9938cdc7fa295ca6df20a252dc059543">maze_diff()</a>.</p>
 
 </div>
 </div>
@@ -120,7 +168,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="maze_8h.html#ab59097ab48a1e883285ed6d3f851e867">create_node()</a>, <a class="el" href="solvers_8h.html#a2a287d256a52d61e3e265d78823d8bbd">explore_neighbors()</a>, <a class="el" href="solvers_8h.html#a39a0eee37eb0bf26269344711aa51df2">flood_fill_custom()</a>, and <a class="el" href="maze__io_8h.html#ad2fb98cae96e3f79c137cbc8fbc59d4f">print_weight_maze()</a>.</p>
+<p>Referenced by <a class="el" href="maze_8h.html#ab59097ab48a1e883285ed6d3f851e867">create_node()</a>, <a class="el" href="solvers_8h.html#a2a287d256a52d61e3e265d78823d8bbd">explore_neighbors()</a>, <a class="el" href="solvers_8h.html#aad2c6e0b49ef03b009fa7e1553dcee9f">flood_fill_custom()</a>, and <a class="el" href="maze__io_8h.html#ad2fb98cae96e3f79c137cbc8fbc59d4f">print_weight_maze()</a>.</p>
 
 </div>
 </div>
@@ -130,7 +178,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 28 2015 18:17:47 for WPI_Smart_Mouse_V3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 29 2015 15:50:09 for WPI_Smart_Mouse_V3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

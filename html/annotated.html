@@ -49,13 +49,13 @@
 <table class="directory">
 <tr id="row_0_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="struct__MAZE.html" target="_self">_MAZE</a></td><td class="desc">Maze is graph of nodes, stored internally as an matrix. don't forget to call free_maze(maze) after a maze is done being used </td></tr>
 <tr id="row_1_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="struct__MOUSE.html" target="_self">_MOUSE</a></td><td class="desc">Depresents a mouse don't ever change the row/col of a mouse directly. This prevents it from working on the real robot use forward and turn_to_face to move the mouse around. Once those functions work on the real robot it will port over fluidly </td></tr>
-<tr id="row_2_" class="even"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="struct__NODE.html" target="_self">_NODE</a></td><td class="desc">Holds its location &amp; neighbors, as well as a bool for indicating if it has been discovered you don't need to free nodes in a maze, just use free_maze however, be sure to free nodes allocated not in mazes </td></tr>
+<tr id="row_2_" class="even"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="struct__NODE.html" target="_self">_NODE</a></td><td class="desc">Holds its location &amp; neighbors, as well as a bool for indicating if it has been discovered you don't need to free nodes in a maze, just use free_maze however, be sure to free nodes allocated not in mazes I finally gave in an added row and col attributes the node....be very careful you dont get fuck with those. Don't ever move a node around in maze because you risk getting the actual row/col off from the nodes row/col visited is meant for ACTUALLY visiting, known is just used for searching/solving </td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 28 2015 18:17:47 for WPI_Smart_Mouse_V3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 29 2015 15:50:09 for WPI_Smart_Mouse_V3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

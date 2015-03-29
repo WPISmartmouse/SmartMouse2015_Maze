@@ -7,7 +7,7 @@
 \begin{DoxyCompactItemize}
 \item 
 struct {\bf \-\_\-\-N\-O\-D\-E}
-\begin{DoxyCompactList}\small\item\em holds its location \& neighbors, as well as a bool for indicating if it has been discovered you don't need to free nodes in a maze, just use free\-\_\-maze however, be sure to free nodes allocated not in mazes \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em holds its location \& neighbors, as well as a bool for indicating if it has been discovered you don't need to free nodes in a maze, just use free\-\_\-maze however, be sure to free nodes allocated not in mazes I finally gave in an added row and col attributes the node....be very careful you dont get fuck with those. Don't ever move a node around in maze because you risk getting the actual row/col off from the nodes row/col visited is meant for A\-C\-T\-U\-A\-L\-L\-Y visiting, known is just used for searching/solving \end{DoxyCompactList}\item 
 struct {\bf \-\_\-\-M\-A\-Z\-E}
 \begin{DoxyCompactList}\small\item\em the maze is graph of nodes, stored internally as an matrix. don't forget to call free\-\_\-maze(maze) after a maze is done being used \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Macros}
@@ -44,6 +44,10 @@ enum {\bf \-\_\-\-D\-I\-R\-E\-C\-T\-I\-O\-N} \{ {\bf N},
 \begin{DoxyCompactList}\small\item\em allocates and intializes a node allocates a node setting all nighbors to null. Function does N\-O\-T allocate for neighbors. \end{DoxyCompactList}\item 
 {\bf Node} $\ast$ {\bf get\-\_\-node} ({\bf Maze} $\ast$maze, int x, int y)
 \begin{DoxyCompactList}\small\item\em get node by its position this is equlvelant to maze-\/$>$nodes[x][y] \end{DoxyCompactList}\item 
+void {\bf update\-\_\-nodes} (bool $\ast$walls, {\bf Direction} dir, {\bf Node} $\ast$no, {\bf Node} $\ast$all, {\bf Node} $\ast$all\-\_\-neighbor)
+\begin{DoxyCompactList}\small\item\em uses the information from a sensor read and correctly adds or removes walls from nodes if sensors see a wall, it will remove a connection in the no\-\_\-wall\-\_\-node if the sensors don't see a wall, it will add a connection in the all\-\_\-wall\-\_\-node \end{DoxyCompactList}\item 
+{\bf Node} $\ast$ {\bf maze\-\_\-diff} ({\bf Maze} $\ast$maze1, {\bf Maze} $\ast$maze2)
+\item 
 bool {\bf visited} (int row, int col, {\bf Direction} dir, {\bf Maze} $\ast$maze)
 \begin{DoxyCompactList}\small\item\em check if a node in a direction is visited looks up (row,col) in maze and checks its neighbors[dir] and returns if that neighbor is known \end{DoxyCompactList}\item 
 bool {\bf free\-\_\-maze} ({\bf Maze} $\ast$maze)
@@ -62,7 +66,7 @@ Contains functions for creating and using the Maze and Node structs.
 
 \doxyref{maze.\-h}{p.}{maze_8h} 
 
-Referenced by create\-\_\-maze(), flood\-\_\-explore(), flood\-\_\-fill\-\_\-custom(), forward(), free\-\_\-maze(), get\-\_\-node(), is\-Center(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-neighbor\-\_\-maze(), print\-\_\-pointer\-\_\-maze(), print\-\_\-weight\-\_\-maze(), and read\-\_\-from\-\_\-file().
+Referenced by create\-\_\-maze(), flood\-\_\-explore(), flood\-\_\-fill\-\_\-custom(), forward(), free\-\_\-maze(), get\-\_\-node(), is\-Center(), maze\-\_\-diff(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-maze\-\_\-mouse(), print\-\_\-neighbor\-\_\-maze(), print\-\_\-pointer\-\_\-maze(), print\-\_\-weight\-\_\-maze(), and read\-\_\-from\-\_\-file().
 
 \index{maze.\-h@{maze.\-h}!P\-A\-T\-H\-\_\-\-S\-I\-Z\-E@{P\-A\-T\-H\-\_\-\-S\-I\-Z\-E}}
 \index{P\-A\-T\-H\-\_\-\-S\-I\-Z\-E@{P\-A\-T\-H\-\_\-\-S\-I\-Z\-E}!maze.h@{maze.\-h}}
@@ -121,7 +125,7 @@ Peter Mitrano
 \end{DoxyAuthor}
 
 
-References create\-\_\-node(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, \-\_\-\-M\-A\-Z\-E\-::nodes, P\-A\-T\-H\-\_\-\-S\-I\-Z\-E, and \-\_\-\-M\-A\-Z\-E\-::solved.
+References \-\_\-\-N\-O\-D\-E\-::col, create\-\_\-node(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, \-\_\-\-M\-A\-Z\-E\-::nodes, P\-A\-T\-H\-\_\-\-S\-I\-Z\-E, \-\_\-\-N\-O\-D\-E\-::row, and \-\_\-\-M\-A\-Z\-E\-::solved.
 
 
 
@@ -197,7 +201,46 @@ References M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, and \-\_\-\-M\-A\-Z\-E\-::nodes.
 
 
 
-Referenced by flood\-\_\-explore(), flood\-\_\-fill\-\_\-custom(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-pointer\-\_\-maze(), read\-\_\-from\-\_\-file(), and sense().
+Referenced by flood\-\_\-explore(), flood\-\_\-fill\-\_\-custom(), maze\-\_\-diff(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-maze\-\_\-mouse(), print\-\_\-pointer\-\_\-maze(), read\-\_\-from\-\_\-file(), and sense().
+
+\index{maze.\-h@{maze.\-h}!maze\-\_\-diff@{maze\-\_\-diff}}
+\index{maze\-\_\-diff@{maze\-\_\-diff}!maze.h@{maze.\-h}}
+\subsubsection[{maze\-\_\-diff}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ maze\-\_\-diff (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze1, }
+\item[{{\bf Maze} $\ast$}]{maze2}
+\end{DoxyParamCaption}
+)}\label{maze_8h_a9938cdc7fa295ca6df20a252dc059543}
+goes through all the squares in two mazes and compares how many neighbors exist. the highest-\/difference unvisted node 
+
+References get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, \-\_\-\-N\-O\-D\-E\-::neighbors, and \-\_\-\-N\-O\-D\-E\-::visited.
+
+
+
+Referenced by flood\-\_\-explore().
+
+\index{maze.\-h@{maze.\-h}!update\-\_\-nodes@{update\-\_\-nodes}}
+\index{update\-\_\-nodes@{update\-\_\-nodes}!maze.h@{maze.\-h}}
+\subsubsection[{update\-\_\-nodes}]{\setlength{\rightskip}{0pt plus 5cm}void update\-\_\-nodes (
+\begin{DoxyParamCaption}
+\item[{bool $\ast$}]{walls, }
+\item[{{\bf Direction}}]{dir, }
+\item[{{\bf Node} $\ast$}]{no, }
+\item[{{\bf Node} $\ast$}]{all, }
+\item[{{\bf Node} $\ast$}]{all\-\_\-neighbor}
+\end{DoxyParamCaption}
+)}\label{maze_8h_aa2aa19c775e7ad9a7e06a0193708768b}
+
+
+uses the information from a sensor read and correctly adds or removes walls from nodes if sensors see a wall, it will remove a connection in the no\-\_\-wall\-\_\-node if the sensors don't see a wall, it will add a connection in the all\-\_\-wall\-\_\-node 
+
+
+
+References \-\_\-\-N\-O\-D\-E\-::neighbors.
+
+
+
+Referenced by flood\-\_\-explore().
 
 \index{maze.\-h@{maze.\-h}!visited@{visited}}
 \index{visited@{visited}!maze.h@{maze.\-h}}
