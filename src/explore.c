@@ -35,10 +35,9 @@ int main(int argc, char* argv[]){
 	char *filename;
 	if (argc >= 2){
 		filename = argv[1];
-		printf("using maze file %s\n",filename);
 	}
 	else {
-		filename = "mazes/16x16.mz";
+		filename = "mazes/16x16_2.mz";
 	}
 
 	FILE *f = fopen(filename,"r");
@@ -48,6 +47,7 @@ int main(int argc, char* argv[]){
 		return EXIT_FAILURE;
 	}
 
+	printf("using maze file %s\n",filename);
 	Maze *maze = read_from_file(f);
 
 	flood_explore(maze);

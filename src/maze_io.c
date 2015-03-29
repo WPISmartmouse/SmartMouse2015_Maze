@@ -18,8 +18,6 @@ Maze *read_from_file(FILE *f){
 
 		if (success == NULL) return NULL;
 
-		//printf("successfully read... %s",line);
-
 		int j;
 		for (j=0;j<MAZE_SIZE;j++){
 			Node *n = get_node(maze,i,j);
@@ -53,6 +51,38 @@ Maze *read_from_file(FILE *f){
 
 	return maze;
 }
+
+void print_maze_mouse(Maze *maze, Mouse *mouse){
+	int i,j;
+	for (i=0;i<MAZE_SIZE;i++){
+		char *str = malloc((MAZE_SIZE * 2 + 1) * sizeof(char));
+
+		char *s=str;
+		for (j=0;j<MAZE_SIZE;j++){
+			if (get_node(maze,i,j)->neighbors[W] == NULL){
+				strcpy(s++,"|");
+			}
+			else {
+				strcpy(s++,"_");
+			}
+
+			if (mouse->row == i && mouse->col == j){
+					strcpy(s++,"o");
+			}
+			else if (get_node(maze,i,j)->neighbors[S] == NULL){
+					strcpy(s++,"_");
+			}
+			else {
+				strcpy(s++," ");
+			}
+		}
+		*(s++) = '|';
+		*s = '\0';
+		printf("%s\n",str);
+		free(str);
+	}
+}
+
 
 void print_maze(Maze *maze){
 	int i,j;

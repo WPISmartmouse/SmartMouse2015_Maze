@@ -3,6 +3,7 @@
 #define READ_MAZE_H
 
 #include "maze.h"
+#include "mouse.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,6 +18,14 @@ Maze *read_from_file(FILE *f);
 * @param maze the maze
 */
 void print_maze(Maze *maze);
+
+
+/** prints a maze with a mouse in it
+* @param mouse the mouse
+* @param maze the maze
+*/
+void print_maze_mouse(Maze *maze, Mouse *mouse);
+
 
 /** duh*/
 void print_pointer_maze(Maze *maze);

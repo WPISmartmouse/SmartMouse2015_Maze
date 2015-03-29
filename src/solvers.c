@@ -1,5 +1,10 @@
 /** solvers.h
 	@author Peter Mitrano
+	use args to the make command to print more information
+	ARGS=-DDEBUG  prints just the mouse position
+	ARGS=-DDEBUG_FULL prints mazes, paths, and mouse positions
+	ARGS=-DDEBUG_PATH prints just paths
+	
 */
 #include "solvers.h"
 
@@ -9,13 +14,12 @@
 //kmaze is the known maze, and should only be used to call sense()
 void flood_explore(Maze *kmaze){
 
-	print_maze(kmaze);
-
 	Mouse *mouse = create_mouse();
 
 	Maze* no_wall_maze = create_maze(); //this maze is initially no walls, and walls are filled out every time the mouse moves
 	Maze* all_wall_maze = create_maze(); //this maze is initially no walls, and walls are filled out every time the mouse moves
 
+	//make all connections open in the no_wall_maze
 	int i,j;
 	for (i=0;i<MAZE_SIZE;i++){
 		for (j=0;j<MAZE_SIZE;j++){
@@ -41,6 +45,7 @@ void flood_explore(Maze *kmaze){
 		//check left right and front sides
 		//eventually this will return values from sensors
 		bool *walls = sense(kmaze,mouse);
+		printf("%i %i %i %i\n",walls[0],walls[1],walls[2],walls[3]);
 
 		//update the mazes to match the sensor readings
 		Node *no_wall_node = get_node(no_wall_maze,mouse->row,mouse->col);
@@ -86,12 +91,6 @@ void flood_explore(Maze *kmaze){
 		flood_fill(no_wall_maze,no_wall_maze->fastest_route);
 		flood_fill(all_wall_maze,all_wall_maze->fastest_route);
 
-/**
-	use args to the make command to print more information
-	ARGS=-DDEBUG  prints just the mouse position
-	ARGS=-DDEBUG_FULL prints mazes, paths, and mouse positions
-	ARGS=-DDEBUG_PATH prints just paths
-*/
 #if defined(DEBUG_PATH) || defined(DEBUG_FULL)
 		printf("no wall path  = %s\n",no_wall_path);
 		printf("all wall path = %s\n",all_wall_path);
@@ -99,22 +98,25 @@ void flood_explore(Maze *kmaze){
 		printf("all wall path (from 0,0)= %s\n",all_wall_maze->fastest_route);
 #endif
 
+		//when the center is found, we need to do something else
+		//currently this just makes it exit
+		if (*no_wall_path == '\0'){
+			solvable = 0;
+		}
 
 		//execute the first instruction of the path!
 		//this will make the calls the forward() and turn_to_face()
 		execute_command(mouse,*no_wall_path);
-#if defined(DEBUG_FULL) || defined(DEBUG)
-		printf("mouse position (%i:%i)\n",mouse->row,mouse->col);
-#endif
-	
+		
+#if defined(DEBUG) ||  defined(DEBUG_PATH) || defined(DEBUG_FULL)
+		print_maze_mouse(all_wall_maze,mouse);
 		printf("[MOVES]   =   %i\n",moves++);
-
-#if defined(DEBUG_FULL)
 		getchar();
 #endif
 
 	}
 	while (strcmp(no_wall_maze->fastest_route,all_wall_maze->fastest_route) && solvable && moves < 256); //don't let it go forever
+
 
 	//this is the final solution which represents how the mouse should travel from start to finish
 	if (solvable){
