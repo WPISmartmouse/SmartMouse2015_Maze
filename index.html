@@ -43,7 +43,15 @@
 Introduction</h1>
 <p>All function documentation is done in the header files. To see notes for each function, click on the header file it belongs to.</p>
 <p>If there are any issues/bugs, use the issue tracker on the github repository. <a href="https://github.com/WPISmartmouse/SmartMouse2015_Maze/issues">Issue tracker</a></p>
-<h1><a class="anchor" id="install_sec_linux"></a>
+<h1><a class="anchor" id="run_sec_linux"></a>
+Building &amp; Running (Linux)</h1>
+<p>to make, run </p>
+<pre class="fragment"> make;./bin/explore
+</pre><p>you can make more debug information print out by making with the ARGS argument </p>
+<pre class="fragment"> make ARGS=-DDEBUG_PATH #this will show the mouse in the maze as it goes. press enter to step forward
+ make ARGS=-DDEBUG #minimal debug info
+ make ARGS=-DDBEUG_FULL #a whole ton of debug information
+</pre><h1><a class="anchor" id="install_sec_linux"></a>
 Installation (Linux)</h1>
 <h2><a class="anchor" id="step1_linux"></a>
 Clone the repository</h2>
@@ -59,7 +67,7 @@ No.</h2>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 29 2015 15:50:09 for WPI_Smart_Mouse_V3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 29 2015 16:22:53 for WPI_Smart_Mouse_V3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
