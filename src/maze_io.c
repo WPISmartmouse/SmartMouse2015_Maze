@@ -57,7 +57,8 @@ Maze *read_from_file(FILE *f){
 void print_maze(Maze *maze){
 	int i,j;
 	for (i=0;i<MAZE_SIZE;i++){
-		char *str = calloc(sizeof(char),MAZE_SIZE + 2);
+		char *str = malloc((MAZE_SIZE * 2 + 1) * sizeof(char));
+
 		char *s=str;
 		for (j=0;j<MAZE_SIZE;j++){
 			if (get_node(maze,i,j)->neighbors[W] == NULL){

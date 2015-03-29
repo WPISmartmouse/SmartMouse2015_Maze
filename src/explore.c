@@ -26,13 +26,27 @@
 #include "maze.h"
 #include "maze_io.h"
 #include "solvers.h"
+#include <errno.h>
 #include <time.h>
 
-int main(){
+int main(int argc, char* argv[]){
 
 	srand(time(NULL));
+	char *filename;
+	if (argc >= 2){
+		filename = argv[1];
+		printf("using maze file %s\n",filename);
+	}
+	else {
+		filename = "mazes/16x16.mz";
+	}
 
-	FILE *f = fopen("mazes/16x16.mz","r");
+	FILE *f = fopen(filename,"r");
+
+	if (f == NULL){
+		printf("error opening maze file %s %s\n",filename,strerror(errno));
+		return EXIT_FAILURE;
+	}
 
 	Maze *maze = read_from_file(f);
 

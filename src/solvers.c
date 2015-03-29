@@ -8,6 +8,9 @@
 //starts at 0,0 and explores the whole maze
 //kmaze is the known maze, and should only be used to call sense()
 void flood_explore(Maze *kmaze){
+
+	print_maze(kmaze);
+
 	Mouse *mouse = create_mouse();
 
 	Maze* no_wall_maze = create_maze(); //this maze is initially no walls, and walls are filled out every time the mouse moves
@@ -29,6 +32,10 @@ void flood_explore(Maze *kmaze){
 	char *all_wall_path;
 	all_wall_path = calloc(PATH_SIZE,sizeof(char));
 
+	//count for debug info
+	int moves = 0;
+	//exit if no solutions are found
+	bool solvable = true;
 	//mouse starts at 0,0
 	do {
 		//check left right and front sides
@@ -73,7 +80,7 @@ void flood_explore(Maze *kmaze){
 		free(walls);
 
 		//solve flood fill on the two mazes
-		flood_fill_custom(no_wall_maze,no_wall_path,mouse->row,mouse->col);
+		solvable = flood_fill_custom(no_wall_maze,no_wall_path,mouse->row,mouse->col);
 		flood_fill_custom(all_wall_maze,all_wall_path,mouse->row,mouse->col);
 		//solve from origin
 		flood_fill(no_wall_maze,no_wall_maze->fastest_route);
@@ -100,11 +107,23 @@ void flood_explore(Maze *kmaze){
 		printf("mouse position (%i:%i)\n",mouse->row,mouse->col);
 #endif
 	
+		printf("[MOVES]   =   %i\n",moves++);
+
+#if defined(DEBUG_FULL)
+		getchar();
+#endif
+
 	}
-	while (strcmp(no_wall_maze->fastest_route,all_wall_maze->fastest_route));
+	while (strcmp(no_wall_maze->fastest_route,all_wall_maze->fastest_route) && solvable && moves < 256); //don't let it go forever
 
 	//this is the final solution which represents how the mouse should travel from start to finish
-	printf("SOLUTION = %s\n",all_wall_maze->fastest_route);
+	if (solvable){
+		printf("SOLUTION = %s\n",all_wall_maze->fastest_route);	
+	}
+	else {
+		printf("NO POSSIBLE SOLUTION\n");	
+	}
+	
 
 	free(mouse);
 	free(no_wall_path);
@@ -114,13 +133,13 @@ void flood_explore(Maze *kmaze){
 }
 
 //this should be used if you just want to start at 0,0
-void flood_fill(Maze *maze, char *path){
-	flood_fill_custom(maze,path,0,0);
+bool flood_fill(Maze *maze, char *path){
+	return flood_fill_custom(maze,path,0,0);
 }
 
 //This method will take a maze and perform a traditional flood fill
 //the fill starts from r0,c0
-void flood_fill_custom(Maze *maze, char *path, int r0, int c0){
+bool flood_fill_custom(Maze *maze, char *path, int r0, int c0){
 	Node *n = get_node(maze,r0,c0);
 	Node *root = get_node(maze,r0,c0);
 	Node *center = get_node(maze,7,7);
@@ -145,7 +164,7 @@ void flood_fill_custom(Maze *maze, char *path, int r0, int c0){
 #endif
 
 	if (!success){
-		return;
+		return false;
 	}
 	
 	//start at the center 
@@ -192,6 +211,7 @@ void flood_fill_custom(Maze *maze, char *path, int r0, int c0){
 	}
 
 	free(r_path);
+	return true;
 }
 
 

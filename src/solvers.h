@@ -31,7 +31,7 @@ void flood_explore(Maze *kmaze);
 * @param maze maze to solve
 * @param path an allocate char* of at least PATH_SIZE to store the solution in
 */
-void flood_fill(Maze *maze, char *path);
+bool flood_fill(Maze *maze, char *path);
 
 /** this one also allows you to specify a starting position other tha 0,0 
  * @param maze the maze the solve
@@ -39,7 +39,7 @@ void flood_fill(Maze *maze, char *path);
  * @param r0 the row to start in
  * @param c0 the column to start in
  */
-void flood_fill_custom(Maze *maze, char *path, int r0, int c0);
+bool flood_fill_custom(Maze *maze, char *path, int r0, int c0);
 
 /**this assigns n->weight+1 to each neighbor, and recursively calls it on all valid neighbors
 * @param node the node to explore the neighbors of
