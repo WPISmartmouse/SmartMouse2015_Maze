@@ -1,6 +1,7 @@
 \section{maze\-\_\-io.\-h File Reference}
 \label{maze__io_8h}\index{maze\-\_\-io.\-h@{maze\-\_\-io.\-h}}
 {\ttfamily \#include \char`\"{}maze.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mouse.\-h\char`\"{}}\\*
 {\ttfamily \#include $<$string.\-h$>$}\\*
 {\ttfamily \#include $<$stdio.\-h$>$}\\*
 {\ttfamily \#include $<$stdlib.\-h$>$}\\*
@@ -10,6 +11,8 @@
 {\bf Maze} $\ast$ {\bf read\-\_\-from\-\_\-file} (F\-I\-L\-E $\ast$f)
 \item 
 void {\bf print\-\_\-maze} ({\bf Maze} $\ast$maze)
+\item 
+void {\bf print\-\_\-maze\-\_\-mouse} ({\bf Maze} $\ast$maze, {\bf Mouse} $\ast$mouse)
 \item 
 void {\bf print\-\_\-pointer\-\_\-maze} ({\bf Maze} $\ast$maze)
 \item 
@@ -52,6 +55,29 @@ References get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, S, and W.
 
 
 Referenced by flood\-\_\-fill\-\_\-custom(), and main().
+
+\index{maze\-\_\-io.\-h@{maze\-\_\-io.\-h}!print\-\_\-maze\-\_\-mouse@{print\-\_\-maze\-\_\-mouse}}
+\index{print\-\_\-maze\-\_\-mouse@{print\-\_\-maze\-\_\-mouse}!maze_io.h@{maze\-\_\-io.\-h}}
+\subsubsection[{print\-\_\-maze\-\_\-mouse}]{\setlength{\rightskip}{0pt plus 5cm}void print\-\_\-maze\-\_\-mouse (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze, }
+\item[{{\bf Mouse} $\ast$}]{mouse}
+\end{DoxyParamCaption}
+)}\label{maze__io_8h_ac87a873cd257ec3249f28bede112a123}
+prints a maze with a mouse in it 
+\begin{DoxyParams}{Parameters}
+{\em mouse} & the mouse \\
+\hline
+{\em maze} & the maze \\
+\hline
+\end{DoxyParams}
+
+
+References \-\_\-\-M\-O\-U\-S\-E\-::col, get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, \-\_\-\-M\-O\-U\-S\-E\-::row, S, and W.
+
+
+
+Referenced by flood\-\_\-explore().
 
 \index{maze\-\_\-io.\-h@{maze\-\_\-io.\-h}!print\-\_\-neighbor\-\_\-maze@{print\-\_\-neighbor\-\_\-maze}}
 \index{print\-\_\-neighbor\-\_\-maze@{print\-\_\-neighbor\-\_\-maze}!maze_io.h@{maze\-\_\-io.\-h}}

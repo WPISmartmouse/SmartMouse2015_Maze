@@ -10,6 +10,10 @@
 \begin{DoxyCompactList}\small\item\em allocates and intializes a node allocates a node setting all nighbors to null. Function does N\-O\-T allocate for neighbors. \end{DoxyCompactList}\item 
 {\bf Node} $\ast$ {\bf get\-\_\-node} ({\bf Maze} $\ast$maze, int row, int col)
 \begin{DoxyCompactList}\small\item\em get node by its position this is equlvelant to maze-\/$>$nodes[x][y] \end{DoxyCompactList}\item 
+void {\bf update\-\_\-nodes} (bool $\ast$walls, {\bf Direction} dir, {\bf Node} $\ast$no, {\bf Node} $\ast$all, {\bf Node} $\ast$all\-\_\-neighbor)
+\begin{DoxyCompactList}\small\item\em uses the information from a sensor read and correctly adds or removes walls from nodes if sensors see a wall, it will remove a connection in the no\-\_\-wall\-\_\-node if the sensors don't see a wall, it will add a connection in the all\-\_\-wall\-\_\-node \end{DoxyCompactList}\item 
+{\bf Node} $\ast$ {\bf maze\-\_\-diff} ({\bf Maze} $\ast$maze1, {\bf Maze} $\ast$maze2)
+\item 
 bool {\bf visited} (int row, int col, {\bf Direction} dir, {\bf Maze} $\ast$maze)
 \begin{DoxyCompactList}\small\item\em check if a node in a direction is visited looks up (row,col) in maze and checks its neighbors[dir] and returns if that neighbor is known \end{DoxyCompactList}\item 
 bool {\bf free\-\_\-maze} ({\bf Maze} $\ast$maze)
@@ -35,7 +39,7 @@ Peter Mitrano
 \end{DoxyAuthor}
 
 
-References create\-\_\-node(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, \-\_\-\-M\-A\-Z\-E\-::nodes, P\-A\-T\-H\-\_\-\-S\-I\-Z\-E, and \-\_\-\-M\-A\-Z\-E\-::solved.
+References \-\_\-\-N\-O\-D\-E\-::col, create\-\_\-node(), \-\_\-\-M\-A\-Z\-E\-::fastest\-\_\-route, M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, \-\_\-\-M\-A\-Z\-E\-::nodes, P\-A\-T\-H\-\_\-\-S\-I\-Z\-E, \-\_\-\-N\-O\-D\-E\-::row, and \-\_\-\-M\-A\-Z\-E\-::solved.
 
 
 
@@ -111,7 +115,46 @@ References M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, and \-\_\-\-M\-A\-Z\-E\-::nodes.
 
 
 
-Referenced by flood\-\_\-explore(), flood\-\_\-fill\-\_\-custom(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-pointer\-\_\-maze(), read\-\_\-from\-\_\-file(), and sense().
+Referenced by flood\-\_\-explore(), flood\-\_\-fill\-\_\-custom(), maze\-\_\-diff(), print\-\_\-dist\-\_\-maze(), print\-\_\-maze(), print\-\_\-maze\-\_\-mouse(), print\-\_\-pointer\-\_\-maze(), read\-\_\-from\-\_\-file(), and sense().
+
+\index{maze.\-c@{maze.\-c}!maze\-\_\-diff@{maze\-\_\-diff}}
+\index{maze\-\_\-diff@{maze\-\_\-diff}!maze.c@{maze.\-c}}
+\subsubsection[{maze\-\_\-diff}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ maze\-\_\-diff (
+\begin{DoxyParamCaption}
+\item[{{\bf Maze} $\ast$}]{maze1, }
+\item[{{\bf Maze} $\ast$}]{maze2}
+\end{DoxyParamCaption}
+)}\label{maze_8c_a9938cdc7fa295ca6df20a252dc059543}
+goes through all the squares in two mazes and compares how many neighbors exist. the highest-\/difference unvisted node 
+
+References get\-\_\-node(), M\-A\-Z\-E\-\_\-\-S\-I\-Z\-E, \-\_\-\-N\-O\-D\-E\-::neighbors, and \-\_\-\-N\-O\-D\-E\-::visited.
+
+
+
+Referenced by flood\-\_\-explore().
+
+\index{maze.\-c@{maze.\-c}!update\-\_\-nodes@{update\-\_\-nodes}}
+\index{update\-\_\-nodes@{update\-\_\-nodes}!maze.c@{maze.\-c}}
+\subsubsection[{update\-\_\-nodes}]{\setlength{\rightskip}{0pt plus 5cm}void update\-\_\-nodes (
+\begin{DoxyParamCaption}
+\item[{bool $\ast$}]{walls, }
+\item[{{\bf Direction}}]{dir, }
+\item[{{\bf Node} $\ast$}]{no, }
+\item[{{\bf Node} $\ast$}]{all, }
+\item[{{\bf Node} $\ast$}]{all\-\_\-neighbor}
+\end{DoxyParamCaption}
+)}\label{maze_8c_aa2aa19c775e7ad9a7e06a0193708768b}
+
+
+uses the information from a sensor read and correctly adds or removes walls from nodes if sensors see a wall, it will remove a connection in the no\-\_\-wall\-\_\-node if the sensors don't see a wall, it will add a connection in the all\-\_\-wall\-\_\-node 
+
+
+
+References \-\_\-\-N\-O\-D\-E\-::neighbors.
+
+
+
+Referenced by flood\-\_\-explore().
 
 \index{maze.\-c@{maze.\-c}!visited@{visited}}
 \index{visited@{visited}!maze.c@{maze.\-c}}
