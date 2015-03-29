@@ -38,8 +38,10 @@ bool flood_fill(Maze *maze, char *path);
  * @param path an allocate char* of at least PATH_SIZE to store the solution in
  * @param r0 the row to start in
  * @param c0 the column to start in
+ * @param r1 the row to end in
+ * @param c1 the column to end in
  */
-bool flood_fill_custom(Maze *maze, char *path, int r0, int c0);
+bool flood_fill_custom(Maze *maze, char *path, int r0, int c0, int r1, int c1);
 
 /**this assigns n->weight+1 to each neighbor, and recursively calls it on all valid neighbors
 * @param node the node to explore the neighbors of

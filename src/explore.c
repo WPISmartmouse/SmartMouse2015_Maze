@@ -1,4 +1,4 @@
-/*! \mainpage SmartMouse V3 Index Page
+/** \mainpage SmartMouse V3 Index Page
  *
  * \section intro_sec Introduction
  *
@@ -37,7 +37,7 @@ int main(int argc, char* argv[]){
 		filename = argv[1];
 	}
 	else {
-		filename = "mazes/16x16_2.mz";
+		filename = "mazes/16x16_3.mz";
 	}
 
 	FILE *f = fopen(filename,"r");

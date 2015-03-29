@@ -18,9 +18,15 @@ typedef enum _DIRECTION Direction;
 /**
  * \brief holds its location & neighbors, as well as a bool for indicating if it has been discovered
  * you don't need to free nodes in a maze, just use free_maze however, be sure to free nodes allocated not in mazes
+ * I finally gave in an added row and col attributes the node....be very careful you dont get fuck with those.
+ * Don't ever move a node around in maze because you risk getting the actual row/col off from the nodes row/col
+ * visited is meant for ACTUALLY visiting, known is just used for searching/solving
  */
 struct _NODE{
 	bool known;
+	bool visited;
+	int row;
+	int col;
 	int weight; //used for flood-fill
 	int distance; //used for a star
 	//if you want to iterate over neighbors, just increment the pointer to north
@@ -55,6 +61,18 @@ Node *create_node();
  * this is equlvelant to maze->nodes[x][y]
  */
 Node *get_node(Maze *maze, int x, int y);
+
+/**
+ * \brief uses the information from a sensor read and correctly adds or removes walls from nodes
+ * if sensors see a wall, it will remove a connection in the no_wall_node
+ * if the sensors don't see a wall, it will add a connection in the all_wall_node
+ */
+void update_nodes(bool *walls, Direction dir,Node *no, Node *all, Node *all_neighbor);
+
+/** goes through all the squares in two mazes and compares how many neighbors exist.
+ * the highest-difference unvisted node
+ */
+ Node *maze_diff(Maze *maze1, Maze *maze2);
 
 /** \brief check if a node in a direction is visited
  * looks up (row,col) in maze and checks its neighbors[dir] and returns if that neighbor is known
