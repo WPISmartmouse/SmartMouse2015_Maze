@@ -9,9 +9,9 @@
  * use forward and turn_to_face to move the mouse around. Once those functions work on the real robot it will port over fluidly
  */
 struct _MOUSE{
-	int row;
-	int col;
-	Direction dir;
+  int row;
+  int col;
+  Direction dir;
 };
 
 typedef struct _MOUSE Mouse;
@@ -19,7 +19,7 @@ typedef struct _MOUSE Mouse;
 /** \biref allocates and initializes a mouse
  * be sure to free this mouse once you're done with it
  * @return the mouse
-*/
+ */
 Mouse *create_mouse();
 
 /** takes the given character and moves in that direction 
@@ -29,8 +29,8 @@ Mouse *create_mouse();
 void execute_command(Mouse *mouse, char dir_char);
 
 /** base functions the emulate mouse movement calls
-
-*/
+ * 
+ */
 void forward(Mouse *mouse);
 
 /**update row and col numbers given based on dir*/
@@ -43,9 +43,10 @@ void turn_to_face(Mouse *mouse,Direction d);
 char dir_to_char(Direction dir);
 
 /** the obvious opposite of dir to char **/
-Direction char_to_dir(char c); 
+int char_to_dir(char c); 
 
 /** returns length 4 array of bools. must be freed */
 bool *sense(Maze *maze, Mouse *mouse);
 
 #endif
+

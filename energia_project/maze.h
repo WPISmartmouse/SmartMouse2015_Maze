@@ -11,7 +11,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-enum _DIRECTION{N,E,S,W};
+enum _DIRECTION{
+  N,E,S,W};
 
 typedef enum _DIRECTION Direction;
 
@@ -23,14 +24,14 @@ typedef enum _DIRECTION Direction;
  * visited is meant for ACTUALLY visiting, known is just used for searching/solving
  */
 struct _NODE{
-	bool known;
-	bool visited;
-	int row;
-	int col;
-	int weight; //used for flood-fill
-	int distance; //used for a star
-	//if you want to iterate over neighbors, just increment the pointer to north
-	struct _NODE *neighbors[4];
+  bool known;
+  bool visited;
+  int row;
+  int col;
+  int weight; //used for flood-fill
+  int distance; //used for a star
+  //if you want to iterate over neighbors, just increment the pointer to north
+  struct _NODE *neighbors[4];
 };
 
 typedef struct _NODE Node;
@@ -40,9 +41,9 @@ typedef struct _NODE Node;
  * don't forget to call free_maze(maze) after a maze is done being used
  */
 struct _MAZE{
-	bool solved; //boolean for if we know the fastest rout
-	Node *nodes[MAZE_SIZE][MAZE_SIZE]; // array of node pointers
-	char *fastest_route; //a char array like NSEWNENNSNE, which means North, South, East...
+  bool solved; //boolean for if we know the fastest rout
+  Node *nodes[MAZE_SIZE][MAZE_SIZE]; // array of node pointers
+  char *fastest_route; //a char array like NSEWNENNSNE, which means North, South, East...
 };
 
 typedef struct _MAZE Maze;
@@ -72,7 +73,7 @@ void update_nodes(bool *walls, Direction dir,Node *no, Node *all, Node *all_neig
 /** goes through all the squares in two mazes and compares how many neighbors exist.
  * the highest-difference unvisted node
  */
- Node *maze_diff(Maze *maze1, Maze *maze2);
+Node *maze_diff(Maze *maze1, Maze *maze2);
 
 /** \brief check if a node in a direction is visited
  * looks up (row,col) in maze and checks its neighbors[dir] and returns if that neighbor is known
@@ -90,3 +91,4 @@ bool free_maze(Maze *maze);
 bool free_node(Node *node);
 
 #endif
+
